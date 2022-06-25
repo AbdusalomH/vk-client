@@ -7,11 +7,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class AuthVC: UIViewController {
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .yellow
     }
+    
+    
 }
 
