@@ -56,15 +56,39 @@
 		049CF414286747D7008DAF86 /* client-vk */ = {
 			isa = PBXGroup;
 			children = (
+				049CF42928674B55008DAF86 /* Core */,
+				049CF42A28674B5E008DAF86 /* Screens */,
+				049CF42B28674B92008DAF86 /* Resources */,
+			);
+			path = "client-vk";
+			sourceTree = "<group>";
+		};
+		049CF42928674B55008DAF86 /* Core */ = {
+			isa = PBXGroup;
+			children = (
 				049CF415286747D7008DAF86 /* AppDelegate.swift */,
 				049CF417286747D7008DAF86 /* SceneDelegate.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		049CF42A28674B5E008DAF86 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
 				049CF419286747D7008DAF86 /* ViewController.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		049CF42B28674B92008DAF86 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				049CF41B286747D7008DAF86 /* Main.storyboard */,
 				049CF41E286747DA008DAF86 /* Assets.xcassets */,
 				049CF420286747DA008DAF86 /* LaunchScreen.storyboard */,
 				049CF423286747DA008DAF86 /* Info.plist */,
 			);
-			path = "client-vk";
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,7 +313,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HD5QFP6NH3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "client-vk/Info.plist";
+				INFOPLIST_FILE = "client-vk/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -317,7 +341,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HD5QFP6NH3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "client-vk/Info.plist";
+				INFOPLIST_FILE = "client-vk/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
