@@ -22,7 +22,8 @@ class AuthVC: UIViewController {
         
         setupViews()
         setupConstraints()
-        loadURL()
+        //loadURL()
+        authorizationVK()
     }
     
     
@@ -60,9 +61,31 @@ class AuthVC: UIViewController {
     
     func authorizationVK() {
         
+        var urlComponents: URLComponents = URLComponents()
         
+        urlComponents.scheme = "https"
         
+        urlComponents.host = "oauth.vk.com"
+        
+        urlComponents.path = "/authorize"
+        
+        urlComponents.queryItems = [URLQueryItem(name: "client_id", value:"7822904"),
+                                    URLQueryItem(name: "display", value: "mobile"),
+                                    URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
+                                    URLQueryItem(name: "scope", value: "1032192"),
+                                    URLQueryItem(name: "response_type", value: "token"),
+                                    URLQueryItem(name: "v", value: "5.131"),
+                                    URLQueryItem(name: "revoke", value: "1")]
+        
+        // URL компонентся для создания безопасного url
+        guard let url = urlComponents.url else {return}
+        
+        let request = URLRequest(url: url)
+        
+        webView.load(request)
         
     }
+    
+    // 1032192
 }
 
