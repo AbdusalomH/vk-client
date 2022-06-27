@@ -9,19 +9,23 @@
 /* Begin PBXBuildFile section */
 		049CF416286747D7008DAF86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF415286747D7008DAF86 /* AppDelegate.swift */; };
 		049CF418286747D7008DAF86 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF417286747D7008DAF86 /* SceneDelegate.swift */; };
-		049CF41A286747D7008DAF86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF419286747D7008DAF86 /* ViewController.swift */; };
+		049CF41A286747D7008DAF86 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF419286747D7008DAF86 /* AuthVC.swift */; };
 		049CF41F286747DA008DAF86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 049CF41E286747DA008DAF86 /* Assets.xcassets */; };
 		049CF422286747DA008DAF86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049CF420286747DA008DAF86 /* LaunchScreen.storyboard */; };
+		049CF42D2869D1A1008DAF86 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF42C2869D1A0008DAF86 /* Session.swift */; };
+		049CF42F2869D656008DAF86 /* FriendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF42E2869D656008DAF86 /* FriendVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		049CF412286747D7008DAF86 /* client-vk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "client-vk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		049CF415286747D7008DAF86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		049CF417286747D7008DAF86 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		049CF419286747D7008DAF86 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		049CF419286747D7008DAF86 /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
 		049CF41E286747DA008DAF86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		049CF421286747DA008DAF86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		049CF423286747DA008DAF86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		049CF42C2869D1A0008DAF86 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		049CF42E2869D656008DAF86 /* FriendVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +77,9 @@
 		049CF42A28674B5E008DAF86 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				049CF419286747D7008DAF86 /* ViewController.swift */,
+				049CF419286747D7008DAF86 /* AuthVC.swift */,
+				049CF42E2869D656008DAF86 /* FriendVC.swift */,
+				049CF42C2869D1A0008DAF86 /* Session.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -158,7 +164,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				049CF41A286747D7008DAF86 /* ViewController.swift in Sources */,
+				049CF42D2869D1A1008DAF86 /* Session.swift in Sources */,
+				049CF42F2869D656008DAF86 /* FriendVC.swift in Sources */,
+				049CF41A286747D7008DAF86 /* AuthVC.swift in Sources */,
 				049CF416286747D7008DAF86 /* AppDelegate.swift in Sources */,
 				049CF418286747D7008DAF86 /* SceneDelegate.swift in Sources */,
 			);
