@@ -27,7 +27,6 @@ class AuthVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        debugPrint(view.frame) //размеры view
         
         setupViews()
         setupConstrains()
@@ -40,12 +39,7 @@ class AuthVC: UIViewController {
     }
     
     func setupConstrains() {
-        NSLayoutConstraint.activate([
-            webView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            webView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
-            webView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
-            webView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
-        ])
+        webView.pinToEdges(to: view)
     }
     
     func authorizeToVK() {
