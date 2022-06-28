@@ -14,6 +14,7 @@
 		049CF422286747DA008DAF86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049CF420286747DA008DAF86 /* LaunchScreen.storyboard */; };
 		049CF42D2869D1A1008DAF86 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF42C2869D1A0008DAF86 /* Session.swift */; };
 		049CF42F2869D656008DAF86 /* FriendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF42E2869D656008DAF86 /* FriendVC.swift */; };
+		049CF434286B102E008DAF86 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 049CF433286B102E008DAF86 /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049CF434286B102E008DAF86 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +112,9 @@
 			dependencies = (
 			);
 			name = "client-vk";
+			packageProductDependencies = (
+				049CF433286B102E008DAF86 /* SDWebImage */,
+			);
 			productName = "client-vk";
 			productReference = 049CF412286747D7008DAF86 /* client-vk.app */;
 			productType = "com.apple.product-type.application";
@@ -138,6 +143,9 @@
 				Base,
 			);
 			mainGroup = 049CF409286747D7008DAF86;
+			packageReferences = (
+				049CF432286B102E008DAF86 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 049CF413286747D7008DAF86 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -376,6 +384,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		049CF432286B102E008DAF86 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		049CF433286B102E008DAF86 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 049CF432286B102E008DAF86 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 049CF40A286747D7008DAF86 /* Project object */;
 }
