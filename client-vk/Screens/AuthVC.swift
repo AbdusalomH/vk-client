@@ -72,7 +72,10 @@ class AuthVC: UIViewController {
         guard let url = urlComponents.url else { return }
         
         let request = URLRequest(url: url)
-        webView.load(request)
+        DispatchQueue.main.async {
+            self.webView.load(request)
+        }
+        
     }
     
 }
@@ -116,6 +119,8 @@ extension AuthVC: WKNavigationDelegate {
         navigationController?.pushViewController(friendsVC, animated: true)
 
         //Останавливаемся слушать запросы браузера
+        
         decisionHandler(.cancel)
+        
     }
 }
