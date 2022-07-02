@@ -17,5 +17,6 @@ class Session {
     var accessToken: String = ""
     var userid: Int = 0
     var expiresIn: Int = 0
+    var v: String = "5.131"
 
 }

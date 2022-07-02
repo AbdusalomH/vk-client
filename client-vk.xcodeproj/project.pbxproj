@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		048027E028707E84000E5D6B /* FriendsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048027DF28707E84000E5D6B /* FriendsApi.swift */; };
+		048027E2287082C1000E5D6B /* Data+JSONprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048027E1287082C1000E5D6B /* Data+JSONprint.swift */; };
+		048027E5287087DE000E5D6B /* FriendsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048027E4287087DE000E5D6B /* FriendsResponse.swift */; };
 		049CF416286747D7008DAF86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF415286747D7008DAF86 /* AppDelegate.swift */; };
 		049CF418286747D7008DAF86 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF417286747D7008DAF86 /* SceneDelegate.swift */; };
 		049CF41A286747D7008DAF86 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF419286747D7008DAF86 /* AuthVC.swift */; };
@@ -14,9 +17,17 @@
 		049CF422286747DA008DAF86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049CF420286747DA008DAF86 /* LaunchScreen.storyboard */; };
 		049CF42D2869D1A1008DAF86 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF42C2869D1A0008DAF86 /* Session.swift */; };
 		049CF42F2869D656008DAF86 /* FriendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF42E2869D656008DAF86 /* FriendVC.swift */; };
+		049CF434286B102E008DAF86 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 049CF433286B102E008DAF86 /* SDWebImage */; };
+		049CF43C286B12D5008DAF86 /* MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF43B286B12D5008DAF86 /* MainTabBarVC.swift */; };
+		049CF43E286B1324008DAF86 /* GroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF43D286B1324008DAF86 /* GroupsVC.swift */; };
+		049CF442286B1CB9008DAF86 /* UIView+PinEdges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF441286B1CB9008DAF86 /* UIView+PinEdges.swift */; };
+		049CF444286B20D8008DAF86 /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF443286B20D8008DAF86 /* FriendsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		048027DF28707E84000E5D6B /* FriendsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsApi.swift; sourceTree = "<group>"; };
+		048027E1287082C1000E5D6B /* Data+JSONprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+JSONprint.swift"; sourceTree = "<group>"; };
+		048027E4287087DE000E5D6B /* FriendsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsResponse.swift; sourceTree = "<group>"; };
 		049CF412286747D7008DAF86 /* client-vk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "client-vk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		049CF415286747D7008DAF86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		049CF417286747D7008DAF86 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +37,10 @@
 		049CF423286747DA008DAF86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		049CF42C2869D1A0008DAF86 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		049CF42E2869D656008DAF86 /* FriendVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendVC.swift; sourceTree = "<group>"; };
+		049CF43B286B12D5008DAF86 /* MainTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
+		049CF43D286B1324008DAF86 /* GroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsVC.swift; sourceTree = "<group>"; };
+		049CF441286B1CB9008DAF86 /* UIView+PinEdges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+PinEdges.swift"; sourceTree = "<group>"; };
+		049CF443286B20D8008DAF86 /* FriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,12 +48,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049CF434286B102E008DAF86 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		048027DE28707E60000E5D6B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				048027DF28707E84000E5D6B /* FriendsApi.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		048027E3287087C7000E5D6B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				048027E4287087DE000E5D6B /* FriendsResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		049CF409286747D7008DAF86 = {
 			isa = PBXGroup;
 			children = (
@@ -58,8 +90,12 @@
 		049CF414286747D7008DAF86 /* client-vk */ = {
 			isa = PBXGroup;
 			children = (
+				048027E3287087C7000E5D6B /* Models */,
+				048027DE28707E60000E5D6B /* Services */,
 				049CF42928674B55008DAF86 /* Core */,
 				049CF42A28674B5E008DAF86 /* Screens */,
+				049CF438286B127B008DAF86 /* Sessions */,
+				049CF440286B1C8E008DAF86 /* Extensions */,
 				049CF42B28674B92008DAF86 /* Resources */,
 			);
 			path = "client-vk";
@@ -77,9 +113,10 @@
 		049CF42A28674B5E008DAF86 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				049CF419286747D7008DAF86 /* AuthVC.swift */,
-				049CF42E2869D656008DAF86 /* FriendVC.swift */,
-				049CF42C2869D1A0008DAF86 /* Session.swift */,
+				049CF435286B1243008DAF86 /* Auth */,
+				049CF43F286B132A008DAF86 /* Tabbar */,
+				049CF436286B1253008DAF86 /* Friends */,
+				049CF437286B125F008DAF86 /* Groups */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -92,6 +129,57 @@
 				049CF423286747DA008DAF86 /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		049CF435286B1243008DAF86 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				049CF419286747D7008DAF86 /* AuthVC.swift */,
+			);
+			name = Auth;
+			sourceTree = "<group>";
+		};
+		049CF436286B1253008DAF86 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				049CF42E2869D656008DAF86 /* FriendVC.swift */,
+				049CF443286B20D8008DAF86 /* FriendsCell.swift */,
+			);
+			name = Friends;
+			sourceTree = "<group>";
+		};
+		049CF437286B125F008DAF86 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				049CF43D286B1324008DAF86 /* GroupsVC.swift */,
+			);
+			name = Groups;
+			sourceTree = "<group>";
+		};
+		049CF438286B127B008DAF86 /* Sessions */ = {
+			isa = PBXGroup;
+			children = (
+				049CF42C2869D1A0008DAF86 /* Session.swift */,
+			);
+			name = Sessions;
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		049CF43F286B132A008DAF86 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				049CF43B286B12D5008DAF86 /* MainTabBarVC.swift */,
+			);
+			name = Tabbar;
+			sourceTree = "<group>";
+		};
+		049CF440286B1C8E008DAF86 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				049CF441286B1CB9008DAF86 /* UIView+PinEdges.swift */,
+				048027E1287082C1000E5D6B /* Data+JSONprint.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,6 +198,9 @@
 			dependencies = (
 			);
 			name = "client-vk";
+			packageProductDependencies = (
+				049CF433286B102E008DAF86 /* SDWebImage */,
+			);
 			productName = "client-vk";
 			productReference = 049CF412286747D7008DAF86 /* client-vk.app */;
 			productType = "com.apple.product-type.application";
@@ -138,6 +229,9 @@
 				Base,
 			);
 			mainGroup = 049CF409286747D7008DAF86;
+			packageReferences = (
+				049CF432286B102E008DAF86 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 049CF413286747D7008DAF86 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -164,9 +258,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048027E028707E84000E5D6B /* FriendsApi.swift in Sources */,
 				049CF42D2869D1A1008DAF86 /* Session.swift in Sources */,
+				048027E2287082C1000E5D6B /* Data+JSONprint.swift in Sources */,
+				049CF444286B20D8008DAF86 /* FriendsCell.swift in Sources */,
+				049CF43C286B12D5008DAF86 /* MainTabBarVC.swift in Sources */,
 				049CF42F2869D656008DAF86 /* FriendVC.swift in Sources */,
+				048027E5287087DE000E5D6B /* FriendsResponse.swift in Sources */,
+				049CF442286B1CB9008DAF86 /* UIView+PinEdges.swift in Sources */,
 				049CF41A286747D7008DAF86 /* AuthVC.swift in Sources */,
+				049CF43E286B1324008DAF86 /* GroupsVC.swift in Sources */,
 				049CF416286747D7008DAF86 /* AppDelegate.swift in Sources */,
 				049CF418286747D7008DAF86 /* SceneDelegate.swift in Sources */,
 			);
@@ -376,6 +477,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		049CF432286B102E008DAF86 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		049CF433286B102E008DAF86 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 049CF432286B102E008DAF86 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 049CF40A286747D7008DAF86 /* Project object */;
 }
