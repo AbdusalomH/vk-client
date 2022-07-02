@@ -7,14 +7,15 @@
 
 import UIKit
 
-struct Friend {
-    let name = "name"
-}
+
 
 final class FriendVC: UIViewController {
     
     
-    var friend: [Friend] = [Friend()]
+    var service = FriendsApi()
+    
+    
+    var friends: [Friend] = []
     
     lazy var tableView: UITableView = {
         
@@ -40,6 +41,11 @@ final class FriendVC: UIViewController {
         view.backgroundColor = .yellow
         configureTableView()
         
+        service.fetchFriends { friends in
+            self.friends = friends
+            self.tableView.reloadData()
+        }
+ 
     }
     
     func configureTableView() {
@@ -56,14 +62,16 @@ extension FriendVC: UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: FriendsCell.reuseID, for: indexPath) as! FriendsCell
         
-        cell.configure(friend[indexPath.row])
+        let friend = friends[indexPath.row]
+        
+        cell.configure(friend)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 1
+        return friends.count
     }
 
 }

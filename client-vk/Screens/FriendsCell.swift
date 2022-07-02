@@ -15,7 +15,7 @@ class FriendsCell: UITableViewCell {
     let friendImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.layer.cornerRadius = 20
+        image.layer.cornerRadius = 25
         image.clipsToBounds = true
         return image
     }()
@@ -32,7 +32,6 @@ class FriendsCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
         setupContraints()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -42,8 +41,9 @@ class FriendsCell: UITableViewCell {
     
     func configure(_ friend: Friend) {
         
-        nameLabel.text = friend.name
-        friendImage.image = UIImage(systemName: "person")
+        nameLabel.text = friend.firstName
+        let imageURL = URL(string: friend.photo100)
+        friendImage.sd_setImage(with: imageURL)
     }
     
     

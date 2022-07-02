@@ -77,13 +77,10 @@ class AuthVC: UIViewController {
 extension AuthVC: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
 
-        
-        //https://oauth.vk.com/blank.html#access_token=533bacf01e11f55b536a565b57531ad114461ae8736d6506a3&expires_in=86400&user_id=8492&state=123456
-        //url.fragment - это часть URL после #
+
         
         guard let url = navigationResponse.response.url, url.path == "/blank.html", let fragment = url.fragment  else {
 
-            //Продолжить слушать запросы браузера
             decisionHandler(.allow)
             return
         }
@@ -105,14 +102,12 @@ extension AuthVC: WKNavigationDelegate {
         guard let token = params["access_token"], let userId = params["user_id"], let expiresIn = params["expires_in"] else { return }
         
         Session.shared.accessToken = token
-        Session.shared.userid = Int(userId) ?? 0 //nil coalescing operator -> оператор замены nil
-        Session.shared.expiresIn = Int(expiresIn) ?? 0 //type convesion
+        Session.shared.userid = Int(userId) ?? 0
+        Session.shared.expiresIn = Int(expiresIn) ?? 0
         
-        //Переход на контроллер следующий
-        let friendsVC = FriendVC()
-        navigationController?.pushViewController(friendsVC, animated: true)
 
-        //Останавливаемся слушать запросы браузера
+        let mainTabBarVC = MainTabBarVC()
+        navigationController?.pushViewController(mainTabBarVC, animated: true)
         
         decisionHandler(.cancel)
         
