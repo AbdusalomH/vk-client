@@ -24,9 +24,7 @@ final class FriendVC: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
         tableView.rowHeight = 70
-
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(FriendsCell.self, forCellReuseIdentifier: FriendsCell.reuseID)
         
@@ -46,7 +44,6 @@ final class FriendVC: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        showSkeleton()
         fetchData()
     }
     
@@ -54,8 +51,8 @@ final class FriendVC: UIViewController {
 
         if !isAddedToSkeleton {
             self.tableView.isSkeletonable = true
-            tableView.startSkeletonAnimation()
-            self.tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: UIColor.greenSea), animation: nil,transition: .crossDissolve(0.8))
+            self.tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: UIColor.greenSea), animation: nil,transition: .crossDissolve(0.25))
+            self.tableView.startSkeletonAnimation()
             self.isAddedToSkeleton = true
         }
     }
@@ -65,11 +62,11 @@ final class FriendVC: UIViewController {
         
         let service = FriendsApi()
         
-        if isAddedToSkeleton == true {
+        if isAddedToSkeleton {
             service.fetchFriends { friends in
                 self.friends = friends
                 self.tableView.stopSkeletonAnimation()
-                self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.8))
+                self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.2))
                 self.isAddedToSkeleton.toggle()
                 self.tableView.reloadData()
             }

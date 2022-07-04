@@ -105,6 +105,8 @@ extension AuthVC: WKNavigationDelegate {
         Session.shared.userid = Int(userId) ?? 0
         Session.shared.expiresIn = Int(expiresIn) ?? 0
         
+        print("авторизация токен \(token)")
+        
 
         let mainTabBarVC = MainTabBarVC()
         navigationController?.pushViewController(mainTabBarVC, animated: true)

@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import SkeletonView
 
 class GroupsCell: UITableViewCell {
     
@@ -19,6 +20,7 @@ class GroupsCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configure()
+        isSkeletonable = true
     }
     
     required init?(coder: NSCoder) {
@@ -40,6 +42,9 @@ class GroupsCell: UITableViewCell {
         
         contentView.addSubview(groupsImage)
         contentView.addSubview(groupsName)
+        
+        groupsName.isSkeletonable = true
+        groupsImage.isSkeletonable = true
         
         groupsImage.translatesAutoresizingMaskIntoConstraints = false
         groupsName.translatesAutoresizingMaskIntoConstraints = false

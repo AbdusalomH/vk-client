@@ -45,7 +45,7 @@ class FriendsCell: UITableViewCell {
     
     func configure(_ friend: Friend) {
         nameLabel.text = friend.firstName
-        let imageURL = URL(string: friend.photo100)
+        guard let imageURL = URL(string: friend.photo100) else {return}
         friendImage.sd_setImage(with: imageURL)
     }
     
