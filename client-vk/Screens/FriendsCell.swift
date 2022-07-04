@@ -7,6 +7,8 @@
 
 import UIKit
 import SDWebImage
+import SkeletonView
+
 
 class FriendsCell: UITableViewCell {
     
@@ -28,10 +30,12 @@ class FriendsCell: UITableViewCell {
         return label
     }()
     
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
         setupContraints()
+        isSkeletonable = true
     }
     
     required init?(coder: NSCoder) {
@@ -40,7 +44,6 @@ class FriendsCell: UITableViewCell {
     
     
     func configure(_ friend: Friend) {
-        
         nameLabel.text = friend.firstName
         let imageURL = URL(string: friend.photo100)
         friendImage.sd_setImage(with: imageURL)
@@ -51,15 +54,18 @@ class FriendsCell: UITableViewCell {
         
         contentView.addSubview(friendImage)
         contentView.addSubview(nameLabel)
-  
+        
+        contentView.isSkeletonable  = true
+        friendImage.isSkeletonable  = true
+        nameLabel.isSkeletonable    = true
+
     }
     
     func setupContraints() {
         
         NSLayoutConstraint.activate([
-            friendImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            friendImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            friendImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
+            friendImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            friendImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             friendImage.heightAnchor.constraint(equalToConstant: 50),
             friendImage.widthAnchor.constraint(equalToConstant: 50),
    
@@ -67,7 +73,6 @@ class FriendsCell: UITableViewCell {
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
-  
         ])  
     }
 }

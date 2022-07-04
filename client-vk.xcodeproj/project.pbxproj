@@ -22,6 +22,10 @@
 		049CF43E286B1324008DAF86 /* GroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF43D286B1324008DAF86 /* GroupsVC.swift */; };
 		049CF442286B1CB9008DAF86 /* UIView+PinEdges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF441286B1CB9008DAF86 /* UIView+PinEdges.swift */; };
 		049CF444286B20D8008DAF86 /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF443286B20D8008DAF86 /* FriendsCell.swift */; };
+		04C0A3732871919900604DC0 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 04C0A3722871919900604DC0 /* SkeletonView */; };
+		04C0A39D2872AC8B00604DC0 /* GroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C0A39C2872AC8B00604DC0 /* GroupsCell.swift */; };
+		04C0A39F2872ADE700604DC0 /* GroupsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C0A39E2872ADE700604DC0 /* GroupsApi.swift */; };
+		04C0A3A12872AE1900604DC0 /* GroupsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C0A3A02872AE1900604DC0 /* GroupsResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +45,9 @@
 		049CF43D286B1324008DAF86 /* GroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsVC.swift; sourceTree = "<group>"; };
 		049CF441286B1CB9008DAF86 /* UIView+PinEdges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+PinEdges.swift"; sourceTree = "<group>"; };
 		049CF443286B20D8008DAF86 /* FriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCell.swift; sourceTree = "<group>"; };
+		04C0A39C2872AC8B00604DC0 /* GroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsCell.swift; sourceTree = "<group>"; };
+		04C0A39E2872ADE700604DC0 /* GroupsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsApi.swift; sourceTree = "<group>"; };
+		04C0A3A02872AE1900604DC0 /* GroupsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04C0A3732871919900604DC0 /* SkeletonView in Frameworks */,
 				049CF434286B102E008DAF86 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				048027DF28707E84000E5D6B /* FriendsApi.swift */,
+				04C0A39E2872ADE700604DC0 /* GroupsApi.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -67,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				048027E4287087DE000E5D6B /* FriendsResponse.swift */,
+				04C0A3A02872AE1900604DC0 /* GroupsResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -152,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				049CF43D286B1324008DAF86 /* GroupsVC.swift */,
+				04C0A39C2872AC8B00604DC0 /* GroupsCell.swift */,
 			);
 			name = Groups;
 			sourceTree = "<group>";
@@ -200,6 +211,7 @@
 			name = "client-vk";
 			packageProductDependencies = (
 				049CF433286B102E008DAF86 /* SDWebImage */,
+				04C0A3722871919900604DC0 /* SkeletonView */,
 			);
 			productName = "client-vk";
 			productReference = 049CF412286747D7008DAF86 /* client-vk.app */;
@@ -231,6 +243,7 @@
 			mainGroup = 049CF409286747D7008DAF86;
 			packageReferences = (
 				049CF432286B102E008DAF86 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				04C0A3712871919900604DC0 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = 049CF413286747D7008DAF86 /* Products */;
 			projectDirPath = "";
@@ -260,10 +273,13 @@
 			files = (
 				048027E028707E84000E5D6B /* FriendsApi.swift in Sources */,
 				049CF42D2869D1A1008DAF86 /* Session.swift in Sources */,
+				04C0A39F2872ADE700604DC0 /* GroupsApi.swift in Sources */,
 				048027E2287082C1000E5D6B /* Data+JSONprint.swift in Sources */,
+				04C0A3A12872AE1900604DC0 /* GroupsResponse.swift in Sources */,
 				049CF444286B20D8008DAF86 /* FriendsCell.swift in Sources */,
 				049CF43C286B12D5008DAF86 /* MainTabBarVC.swift in Sources */,
 				049CF42F2869D656008DAF86 /* FriendVC.swift in Sources */,
+				04C0A39D2872AC8B00604DC0 /* GroupsCell.swift in Sources */,
 				048027E5287087DE000E5D6B /* FriendsResponse.swift in Sources */,
 				049CF442286B1CB9008DAF86 /* UIView+PinEdges.swift in Sources */,
 				049CF41A286747D7008DAF86 /* AuthVC.swift in Sources */,
@@ -487,6 +503,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		04C0A3712871919900604DC0 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -494,6 +518,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 049CF432286B102E008DAF86 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
+		};
+		04C0A3722871919900604DC0 /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04C0A3712871919900604DC0 /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

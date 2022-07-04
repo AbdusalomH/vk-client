@@ -7,7 +7,6 @@
 
 import Foundation
 
-// https://api.vk.com/method/users.get?user_ids=210700286&fields=bdate&access_token=533bacf01e11f55b536a565b57531ac114461ae8736d6506a3&v=5.131
 
 
 class FriendsApi {
@@ -23,7 +22,7 @@ class FriendsApi {
         
         urlComponents.queryItems = [URLQueryItem(name: "user_id", value: "\(Session.shared.userid)"),
                                     URLQueryItem(name: "order", value: "name"),
-                                    URLQueryItem(name: "count", value: "5"),
+                                    URLQueryItem(name: "count", value: "30"),
                                     URLQueryItem(name: "fields", value: "bdate, city, photo_100"),
                                     URLQueryItem(name: "v", value:  Session.shared.v),
                                     URLQueryItem(name: "access_token", value: "\(Session.shared.accessToken)")
@@ -36,15 +35,12 @@ class FriendsApi {
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
-            
-//            guard let err = error else {
-//                return
-//            }
+            if error != nil {
+                print(error as Any)
+                return
+            }
             
             guard let jsonData = data else {return}
-            
-            print(jsonData.prettyPrintedJSONString)
-
             
             do {
                 let friendsJSON = try JSONDecoder().decode(FriendsJSON.self, from: jsonData)
