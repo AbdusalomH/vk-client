@@ -12,6 +12,8 @@ class MainTabBarVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.setHidesBackButton(true, animated: true)
+        
         let friends = FriendVC()
         
         let friendsTabBarItem = UITabBarItem()
@@ -31,7 +33,6 @@ class MainTabBarVC: UITabBarController {
         
         let navigationFiendsVC = UINavigationController(rootViewController: friends)
         let navigationGroupsVC = UINavigationController(rootViewController: groups)
-        
         
         self.viewControllers = [navigationFiendsVC, navigationGroupsVC]
         

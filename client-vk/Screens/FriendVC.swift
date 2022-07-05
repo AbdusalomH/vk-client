@@ -12,10 +12,13 @@ import SkeletonView
 
 final class FriendVC: UIViewController {
     
+    
+    
 
     var isAddedToSkeleton: Bool = false
-        
     
+    let refresh = UIRefreshControl()
+        
     var friends: [Friend] = []
     
     lazy var tableView: UITableView = {
@@ -24,14 +27,10 @@ final class FriendVC: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
         tableView.rowHeight = 70
-
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(FriendsCell.self, forCellReuseIdentifier: FriendsCell.reuseID)
-        
         return tableView
-        
     }()
     
 
@@ -41,21 +40,30 @@ final class FriendVC: UIViewController {
         title = "F r i e n d s"
         configureTableView()
         showSkeleton()
+        
+        
+        refresh.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
+        tableView.addSubview(refresh)
+        tableView.refreshControl = refresh
+        
     }
     
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        showSkeleton()
         fetchData()
     }
     
+    @objc func refreshTable() {
+        fetchData()
+        refresh.endRefreshing()
+    }
+    
     func showSkeleton() {
-
         if !isAddedToSkeleton {
             self.tableView.isSkeletonable = true
-            tableView.startSkeletonAnimation()
-            self.tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: UIColor.greenSea), animation: nil,transition: .crossDissolve(0.8))
+            self.tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: UIColor.gray), animation: nil,transition: .crossDissolve(0.5))
+            self.tableView.startSkeletonAnimation()
             self.isAddedToSkeleton = true
         }
     }
@@ -65,12 +73,11 @@ final class FriendVC: UIViewController {
         
         let service = FriendsApi()
         
-        if isAddedToSkeleton == true {
+        if isAddedToSkeleton {
             service.fetchFriends { friends in
                 self.friends = friends
                 self.tableView.stopSkeletonAnimation()
-                self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.8))
-                self.isAddedToSkeleton.toggle()
+                self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.2))
                 self.tableView.reloadData()
             }
         }
@@ -102,5 +109,12 @@ extension FriendVC: UITableViewDelegate, SkeletonTableViewDataSource {
     
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
        return FriendsCell.reuseID
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let userinfo = UserInfoVC(userInfo: friends[indexPath.row])
+        navigationController?.pushViewController(userinfo, animated: true)
+        
     }
 }

@@ -22,8 +22,8 @@ class FriendsApi {
         
         urlComponents.queryItems = [URLQueryItem(name: "user_id", value: "\(Session.shared.userid)"),
                                     URLQueryItem(name: "order", value: "name"),
-                                    URLQueryItem(name: "count", value: "30"),
-                                    URLQueryItem(name: "fields", value: "bdate, city, photo_100"),
+                                    URLQueryItem(name: "count", value: "40"),
+                                    URLQueryItem(name: "fields", value: "bdate, city, photo_100, country, photo_200_orig"),
                                     URLQueryItem(name: "v", value:  Session.shared.v),
                                     URLQueryItem(name: "access_token", value: "\(Session.shared.accessToken)")
                                     ]
@@ -41,6 +41,7 @@ class FriendsApi {
             }
             
             guard let jsonData = data else {return}
+            print(data?.prettyPrintedJSONString)
             
             do {
                 let friendsJSON = try JSONDecoder().decode(FriendsJSON.self, from: jsonData)
