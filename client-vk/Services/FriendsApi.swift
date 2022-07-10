@@ -11,7 +11,7 @@ import Foundation
 
 class FriendsApi {
     
-    func fetchFriends(completion: @escaping ([Friend]) -> ()) {
+    func fetchFriends(completion: @escaping (Result<[Friend], VKError>) -> ()) {
         
         
         var urlComponents = URLComponents()
@@ -36,7 +36,7 @@ class FriendsApi {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
             if error != nil {
-                print(error as Any)
+                completion(.failure(.DataError))
                 return
             }
             
@@ -48,7 +48,7 @@ class FriendsApi {
                 let friends = friendsJSON.response.items
                 print(Thread.current)
                 DispatchQueue.main.async {
-                    completion(friends)
+                    completion(.success(friends))
                 }
             } catch {
                 print(error)

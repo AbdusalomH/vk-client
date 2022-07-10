@@ -27,6 +27,7 @@
 		04C0A3A12872AE1900604DC0 /* GroupsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C0A3A02872AE1900604DC0 /* GroupsResponse.swift */; };
 		04C0A3A32872D82500604DC0 /* FriendsResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C0A3A22872D82500604DC0 /* FriendsResponses.swift */; };
 		04C0A3A52872D9D000604DC0 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C0A3A42872D9D000604DC0 /* UserInfoVC.swift */; };
+		04F91B4C287A9BCF0085A9D7 /* VKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F91B4B287A9BCF0085A9D7 /* VKError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		04C0A3A02872AE1900604DC0 /* GroupsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsResponse.swift; sourceTree = "<group>"; };
 		04C0A3A22872D82500604DC0 /* FriendsResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsResponses.swift; sourceTree = "<group>"; };
 		04C0A3A42872D9D000604DC0 /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
+		04F91B4B287A9BCF0085A9D7 /* VKError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		049CF414286747D7008DAF86 /* client-vk */ = {
 			isa = PBXGroup;
 			children = (
+				04F91B4A287A9BBE0085A9D7 /* VKErrors */,
 				048027E3287087C7000E5D6B /* Models */,
 				048027DE28707E60000E5D6B /* Services */,
 				049CF42928674B55008DAF86 /* Core */,
@@ -204,6 +207,14 @@
 			name = UsersInfo;
 			sourceTree = "<group>";
 		};
+		04F91B4A287A9BBE0085A9D7 /* VKErrors */ = {
+			isa = PBXGroup;
+			children = (
+				04F91B4B287A9BCF0085A9D7 /* VKError.swift */,
+			);
+			path = VKErrors;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -296,6 +307,7 @@
 				049CF43E286B1324008DAF86 /* GroupsVC.swift in Sources */,
 				049CF416286747D7008DAF86 /* AppDelegate.swift in Sources */,
 				04C0A3A32872D82500604DC0 /* FriendsResponses.swift in Sources */,
+				04F91B4C287A9BCF0085A9D7 /* VKError.swift in Sources */,
 				049CF418286747D7008DAF86 /* SceneDelegate.swift in Sources */,
 				04C0A3A52872D9D000604DC0 /* UserInfoVC.swift in Sources */,
 			);
