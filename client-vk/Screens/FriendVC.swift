@@ -11,9 +11,6 @@ import SkeletonView
 
 
 final class FriendVC: UIViewController {
-    
-    
-    
 
     var isAddedToSkeleton: Bool = false
     
@@ -74,11 +71,20 @@ final class FriendVC: UIViewController {
         let service = FriendsApi()
         
         if isAddedToSkeleton {
-            service.fetchFriends { friends in
-                self.friends = friends
-                self.tableView.stopSkeletonAnimation()
-                self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.2))
-                self.tableView.reloadData()
+            service.fetchFriends { [weak self] result in
+                guard let self = self else {return}
+                
+                switch result {
+                    
+                case  .success(let friends):
+                    self.friends = friends
+                    self.tableView.stopSkeletonAnimation()
+                    self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.2))
+                    self.tableView.reloadData()
+                    
+                case .failure(let error):
+                    print(error.rawValue)
+                }
             }
         }
     }
@@ -95,11 +101,9 @@ extension FriendVC: UITableViewDelegate, SkeletonTableViewDataSource {
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: FriendsCell.reuseID, for: indexPath) as! FriendsCell
         let friend = friends[indexPath.row]
         cell.configure(friend)
-        
         return cell
     }
     
@@ -112,9 +116,7 @@ extension FriendVC: UITableViewDelegate, SkeletonTableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let userinfo = UserInfoVC(userInfo: friends[indexPath.row])
         navigationController?.pushViewController(userinfo, animated: true)
-        
     }
 }
