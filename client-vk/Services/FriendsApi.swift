@@ -11,7 +11,7 @@ import Foundation
 
 class FriendsApi {
     
-    func fetchFriends(completion: @escaping (Result<[Friend], VKError>) -> ()) {
+    func fetchFriends(offset: Int = 0, completion: @escaping (Result<[Friend], VKError>) -> ()) {
         
         
         var urlComponents = URLComponents()
@@ -22,7 +22,8 @@ class FriendsApi {
         
         urlComponents.queryItems = [URLQueryItem(name: "user_id", value: "\(Session.shared.userid)"),
                                     URLQueryItem(name: "order", value: "name"),
-                                    URLQueryItem(name: "count", value: "40"),
+                                    URLQueryItem(name: "count", value: "15"),
+                                    URLQueryItem(name: "offset", value: "\(offset)"),
                                     URLQueryItem(name: "fields", value: "bdate, city, photo_100, country, photo_200_orig"),
                                     URLQueryItem(name: "v", value:  Session.shared.v),
                                     URLQueryItem(name: "access_token", value: "\(Session.shared.accessToken)")
@@ -32,7 +33,6 @@ class FriendsApi {
         
         let request = URLRequest(url: url)
         
-        
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
             if error != nil {
@@ -40,13 +40,15 @@ class FriendsApi {
                 return
             }
             
-            guard let jsonData = data else {return}
-            print(data?.prettyPrintedJSONString)
+            guard let jsonData = data else {
+                completion(.failure(.DataError))
+                return
+                
+            }
             
             do {
                 let friendsJSON = try JSONDecoder().decode(FriendsJSON.self, from: jsonData)
                 let friends = friendsJSON.response.items
-                print(Thread.current)
                 DispatchQueue.main.async {
                     completion(.success(friends))
                 }
