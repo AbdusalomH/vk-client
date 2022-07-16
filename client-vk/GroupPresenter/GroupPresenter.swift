@@ -1,17 +1,23 @@
 //
-//  GroupsApi.swift
+//  GroupPresenter.swift
 //  client-vk
 //
-//  Created by Mac on 7/4/22.
+//  Created by Mac on 7/13/22.
 //
 
-import Foundation
+import UIKit
 
-
-class GroupsApi {
+protocol GroupPresentProtocol: AnyObject {
+    func presentGroup(GroupsResponse: [Group])
     
-    func fetchGroups(completion: @escaping (Result<[Group], VKError>) -> ()) {
+}
 
+class GroupPresenter {
+    
+    var delegate: GroupPresentProtocol?
+    
+    public func getGroups() {
+        
         var urlComponents = URLComponents()
         
         urlComponents.scheme = "https"
@@ -30,27 +36,15 @@ class GroupsApi {
         
         let request = URLRequest(url: url)
         
-        
-        let task = URLSession.shared.dataTask(with: request) { data, _, err in
+        let task = URLSession.shared.dataTask(with: request) { data, _, error in
             
+            guard let groupData = data, error == nil else {return}
             
-            if err != nil {
-                completion(.failure(.ResponseErroor))
-                return
-            }
-            
-            if let groupResponse = data {
-                do {
-                    let groupsJSON = try JSONDecoder().decode(GroupsJSON.self, from: groupResponse)
-                    let receivedGroup = groupsJSON.response.items
-                    DispatchQueue.main.async {
-                        completion(.success(receivedGroup))
-                    }
-                } catch {
-                    print(error)
-                }
-            } else {
-                completion(.failure(.ResponseErroor))
+            do {
+                let groups = try JSONDecoder().decode(GroupsJSON.self, from: groupData)
+                self.delegate?.presentGroup(GroupsResponse: groups.response.items)
+            } catch {
+             print(error)
             }
         }
         task.resume()
