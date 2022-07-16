@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040231EC287ECB6E003AB343 /* GroupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040231EB287ECB6E003AB343 /* GroupPresenter.swift */; };
+		040231EE287ED076003AB343 /* GroupsWithPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040231ED287ED076003AB343 /* GroupsWithPresenter.swift */; };
+		040231F028803548003AB343 /* AlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040231EF28803548003AB343 /* AlertVC.swift */; };
+		040231F328803673003AB343 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040231F228803673003AB343 /* AlertController.swift */; };
+		040231F928817538003AB343 /* GroupsDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040231F828817538003AB343 /* GroupsDetailsVC.swift */; };
+		040231FB28830A80003AB343 /* PostCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040231FA28830A80003AB343 /* PostCellModel.swift */; };
 		048027E028707E84000E5D6B /* FriendsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048027DF28707E84000E5D6B /* FriendsApi.swift */; };
 		048027E2287082C1000E5D6B /* Data+JSONprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048027E1287082C1000E5D6B /* Data+JSONprint.swift */; };
 		049CF416286747D7008DAF86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF415286747D7008DAF86 /* AppDelegate.swift */; };
@@ -28,9 +34,18 @@
 		04C0A3A32872D82500604DC0 /* FriendsResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C0A3A22872D82500604DC0 /* FriendsResponses.swift */; };
 		04C0A3A52872D9D000604DC0 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C0A3A42872D9D000604DC0 /* UserInfoVC.swift */; };
 		04F91B4C287A9BCF0085A9D7 /* VKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F91B4B287A9BCF0085A9D7 /* VKError.swift */; };
+		04F91B4E287BF41D0085A9D7 /* NewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F91B4D287BF41D0085A9D7 /* NewsVC.swift */; };
+		04F91B51287BF6480085A9D7 /* NewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F91B50287BF6480085A9D7 /* NewsResponse.swift */; };
+		04F91B53287BF6600085A9D7 /* NewsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F91B52287BF6600085A9D7 /* NewsApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		040231EB287ECB6E003AB343 /* GroupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupPresenter.swift; sourceTree = "<group>"; };
+		040231ED287ED076003AB343 /* GroupsWithPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsWithPresenter.swift; sourceTree = "<group>"; };
+		040231EF28803548003AB343 /* AlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertVC.swift; sourceTree = "<group>"; };
+		040231F228803673003AB343 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		040231F828817538003AB343 /* GroupsDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsDetailsVC.swift; sourceTree = "<group>"; };
+		040231FA28830A80003AB343 /* PostCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellModel.swift; sourceTree = "<group>"; };
 		048027DF28707E84000E5D6B /* FriendsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsApi.swift; sourceTree = "<group>"; };
 		048027E1287082C1000E5D6B /* Data+JSONprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+JSONprint.swift"; sourceTree = "<group>"; };
 		049CF412286747D7008DAF86 /* client-vk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "client-vk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +67,9 @@
 		04C0A3A22872D82500604DC0 /* FriendsResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsResponses.swift; sourceTree = "<group>"; };
 		04C0A3A42872D9D000604DC0 /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		04F91B4B287A9BCF0085A9D7 /* VKError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKError.swift; sourceTree = "<group>"; };
+		04F91B4D287BF41D0085A9D7 /* NewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsVC.swift; sourceTree = "<group>"; };
+		04F91B50287BF6480085A9D7 /* NewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponse.swift; sourceTree = "<group>"; };
+		04F91B52287BF6600085A9D7 /* NewsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,11 +85,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040231EA287ECB50003AB343 /* GroupPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				040231EB287ECB6E003AB343 /* GroupPresenter.swift */,
+			);
+			path = GroupPresenter;
+			sourceTree = "<group>";
+		};
+		040231F128803648003AB343 /* CustonViews */ = {
+			isa = PBXGroup;
+			children = (
+				040231F228803673003AB343 /* AlertController.swift */,
+			);
+			path = CustonViews;
+			sourceTree = "<group>";
+		};
 		048027DE28707E60000E5D6B /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				048027DF28707E84000E5D6B /* FriendsApi.swift */,
 				04C0A39E2872ADE700604DC0 /* GroupsApi.swift */,
+				04F91B52287BF6600085A9D7 /* NewsApi.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -81,6 +116,7 @@
 			children = (
 				04C0A3A02872AE1900604DC0 /* GroupsResponse.swift */,
 				04C0A3A22872D82500604DC0 /* FriendsResponses.swift */,
+				04F91B50287BF6480085A9D7 /* NewsResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -104,6 +140,8 @@
 		049CF414286747D7008DAF86 /* client-vk */ = {
 			isa = PBXGroup;
 			children = (
+				040231F128803648003AB343 /* CustonViews */,
+				040231EA287ECB50003AB343 /* GroupPresenter */,
 				04F91B4A287A9BBE0085A9D7 /* VKErrors */,
 				048027E3287087C7000E5D6B /* Models */,
 				048027DE28707E60000E5D6B /* Services */,
@@ -131,6 +169,7 @@
 				049CF435286B1243008DAF86 /* Auth */,
 				049CF43F286B132A008DAF86 /* Tabbar */,
 				049CF436286B1253008DAF86 /* Friends */,
+				04F91B4F287BF4260085A9D7 /* News */,
 				049CF437286B125F008DAF86 /* Groups */,
 				04C0A3A62872D9D400604DC0 /* UsersInfo */,
 			);
@@ -168,7 +207,9 @@
 			isa = PBXGroup;
 			children = (
 				049CF43D286B1324008DAF86 /* GroupsVC.swift */,
+				040231ED287ED076003AB343 /* GroupsWithPresenter.swift */,
 				04C0A39C2872AC8B00604DC0 /* GroupsCell.swift */,
+				040231F828817538003AB343 /* GroupsDetailsVC.swift */,
 			);
 			name = Groups;
 			sourceTree = "<group>";
@@ -195,6 +236,7 @@
 			children = (
 				049CF441286B1CB9008DAF86 /* UIView+PinEdges.swift */,
 				048027E1287082C1000E5D6B /* Data+JSONprint.swift */,
+				040231EF28803548003AB343 /* AlertVC.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -213,6 +255,15 @@
 				04F91B4B287A9BCF0085A9D7 /* VKError.swift */,
 			);
 			path = VKErrors;
+			sourceTree = "<group>";
+		};
+		04F91B4F287BF4260085A9D7 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				04F91B4D287BF41D0085A9D7 /* NewsVC.swift */,
+				040231FA28830A80003AB343 /* PostCellModel.swift */,
+			);
+			name = News;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,21 +346,30 @@
 			files = (
 				048027E028707E84000E5D6B /* FriendsApi.swift in Sources */,
 				049CF42D2869D1A1008DAF86 /* Session.swift in Sources */,
+				040231F028803548003AB343 /* AlertVC.swift in Sources */,
 				04C0A39F2872ADE700604DC0 /* GroupsApi.swift in Sources */,
+				040231F328803673003AB343 /* AlertController.swift in Sources */,
+				040231FB28830A80003AB343 /* PostCellModel.swift in Sources */,
 				048027E2287082C1000E5D6B /* Data+JSONprint.swift in Sources */,
+				040231F928817538003AB343 /* GroupsDetailsVC.swift in Sources */,
 				04C0A3A12872AE1900604DC0 /* GroupsResponse.swift in Sources */,
 				049CF444286B20D8008DAF86 /* FriendsCell.swift in Sources */,
 				049CF43C286B12D5008DAF86 /* MainTabBarVC.swift in Sources */,
 				049CF42F2869D656008DAF86 /* FriendVC.swift in Sources */,
 				04C0A39D2872AC8B00604DC0 /* GroupsCell.swift in Sources */,
+				04F91B51287BF6480085A9D7 /* NewsResponse.swift in Sources */,
 				049CF442286B1CB9008DAF86 /* UIView+PinEdges.swift in Sources */,
+				04F91B53287BF6600085A9D7 /* NewsApi.swift in Sources */,
 				049CF41A286747D7008DAF86 /* AuthVC.swift in Sources */,
 				049CF43E286B1324008DAF86 /* GroupsVC.swift in Sources */,
+				040231EE287ED076003AB343 /* GroupsWithPresenter.swift in Sources */,
 				049CF416286747D7008DAF86 /* AppDelegate.swift in Sources */,
 				04C0A3A32872D82500604DC0 /* FriendsResponses.swift in Sources */,
 				04F91B4C287A9BCF0085A9D7 /* VKError.swift in Sources */,
 				049CF418286747D7008DAF86 /* SceneDelegate.swift in Sources */,
+				040231EC287ECB6E003AB343 /* GroupPresenter.swift in Sources */,
 				04C0A3A52872D9D000604DC0 /* UserInfoVC.swift in Sources */,
+				04F91B4E287BF41D0085A9D7 /* NewsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
