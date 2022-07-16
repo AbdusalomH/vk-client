@@ -15,8 +15,12 @@ final class FriendVC: UIViewController {
     var isAddedToSkeleton: Bool = false
     
     let refresh = UIRefreshControl()
+    
+    let service = FriendsApi()
         
     var friends: [Friend] = []
+    
+    var isReqestingFriends: Bool = false
     
     lazy var tableView: UITableView = {
         
@@ -24,6 +28,7 @@ final class FriendVC: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.prefetchDataSource = self
         tableView.rowHeight = 70
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(FriendsCell.self, forCellReuseIdentifier: FriendsCell.reuseID)
@@ -33,22 +38,25 @@ final class FriendVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .yellow
         title = "F r i e n d s"
+        
         configureTableView()
         showSkeleton()
+        configureRefreshTable()
         
-        
+    }
+    
+    func configureRefreshTable() {
         refresh.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
         tableView.addSubview(refresh)
         tableView.refreshControl = refresh
-        
+        fetchData()
     }
     
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        fetchData()
+        
     }
     
     @objc func refreshTable() {
@@ -66,21 +74,30 @@ final class FriendVC: UIViewController {
     }
     
     
-    func fetchData() {
-        
-        let service = FriendsApi()
+    func fetchData(offset: Int = 0) {
         
         if isAddedToSkeleton {
-            service.fetchFriends { [weak self] result in
+            
+            service.fetchFriends(offset: offset) { [weak self] result in
+                
                 guard let self = self else {return}
+                
+                self.isReqestingFriends = false
                 
                 switch result {
                     
                 case  .success(let friends):
-                    self.friends = friends
-                    self.tableView.stopSkeletonAnimation()
-                    self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.2))
+                    if offset == 0 {
+                        self.friends = friends
+                        self.tableView.stopSkeletonAnimation()
+                        self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.2))
+                        self.tableView.reloadData()
+                        return
+                    }
+                    
+                    self.friends.append(contentsOf: friends)
                     self.tableView.reloadData()
+                    
                     
                 case .failure(let error):
                     print(error.rawValue)
@@ -92,10 +109,12 @@ final class FriendVC: UIViewController {
     func configureTableView() {
         view.addSubview(tableView)
         tableView.pinToEdges(to: view)
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = .systemBackground
         
     }
 }
+
+
 
 extension FriendVC: UITableViewDelegate, SkeletonTableViewDataSource {
 
@@ -120,3 +139,18 @@ extension FriendVC: UITableViewDelegate, SkeletonTableViewDataSource {
         navigationController?.pushViewController(userinfo, animated: true)
     }
 }
+
+
+extension FriendVC: UITableViewDataSourcePrefetching {
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+            let maxNumber = indexPaths.map({$0.last ?? 0}).max() ?? 0
+        
+            if maxNumber > friends.count - 5, isReqestingFriends == false {
+                isReqestingFriends = true
+                fetchData(offset: maxNumber)
+            }
+    }
+}
+    
+
