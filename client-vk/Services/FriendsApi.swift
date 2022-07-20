@@ -31,7 +31,8 @@ class FriendsApi {
     
         guard let url = urlComponents.url else {return}
         
-        let request = URLRequest(url: url)
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
