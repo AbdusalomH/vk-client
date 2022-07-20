@@ -13,8 +13,13 @@
 		040231F328803673003AB343 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040231F228803673003AB343 /* AlertController.swift */; };
 		040231F928817538003AB343 /* GroupsDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040231F828817538003AB343 /* GroupsDetailsVC.swift */; };
 		040231FB28830A80003AB343 /* PostCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040231FA28830A80003AB343 /* PostCellModel.swift */; };
+		0422A4202886ABC20050836F /* UIImage + AspectRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422A41F2886ABC20050836F /* UIImage + AspectRatio.swift */; };
 		048027E028707E84000E5D6B /* FriendsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048027DF28707E84000E5D6B /* FriendsApi.swift */; };
 		048027E2287082C1000E5D6B /* Data+JSONprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048027E1287082C1000E5D6B /* Data+JSONprint.swift */; };
+		048A9C11288564EF004D33E0 /* AuthorOfFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A9C10288564EF004D33E0 /* AuthorOfFeedTableViewCell.swift */; };
+		048A9C132885650C004D33E0 /* TextOfFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A9C122885650C004D33E0 /* TextOfFeedTableViewCell.swift */; };
+		048A9C1528856536004D33E0 /* PhotoOfFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A9C1428856536004D33E0 /* PhotoOfFeedTableViewCell.swift */; };
+		048A9C172885654F004D33E0 /* LikeCountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A9C162885654F004D33E0 /* LikeCountTableViewCell.swift */; };
 		049CF416286747D7008DAF86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF415286747D7008DAF86 /* AppDelegate.swift */; };
 		049CF418286747D7008DAF86 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF417286747D7008DAF86 /* SceneDelegate.swift */; };
 		049CF41A286747D7008DAF86 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF419286747D7008DAF86 /* AuthVC.swift */; };
@@ -27,6 +32,7 @@
 		049CF43E286B1324008DAF86 /* GroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF43D286B1324008DAF86 /* GroupsVC.swift */; };
 		049CF442286B1CB9008DAF86 /* UIView+PinEdges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF441286B1CB9008DAF86 /* UIView+PinEdges.swift */; };
 		049CF444286B20D8008DAF86 /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CF443286B20D8008DAF86 /* FriendsCell.swift */; };
+		04A953DE2886D67C00BB8765 /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A953DD2886D67C00BB8765 /* EmptyTableViewCell.swift */; };
 		04C0A3732871919900604DC0 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 04C0A3722871919900604DC0 /* SkeletonView */; };
 		04C0A39D2872AC8B00604DC0 /* GroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C0A39C2872AC8B00604DC0 /* GroupsCell.swift */; };
 		04C0A39F2872ADE700604DC0 /* GroupsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C0A39E2872ADE700604DC0 /* GroupsApi.swift */; };
@@ -46,8 +52,13 @@
 		040231F228803673003AB343 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		040231F828817538003AB343 /* GroupsDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsDetailsVC.swift; sourceTree = "<group>"; };
 		040231FA28830A80003AB343 /* PostCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellModel.swift; sourceTree = "<group>"; };
+		0422A41F2886ABC20050836F /* UIImage + AspectRatio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + AspectRatio.swift"; sourceTree = "<group>"; };
 		048027DF28707E84000E5D6B /* FriendsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsApi.swift; sourceTree = "<group>"; };
 		048027E1287082C1000E5D6B /* Data+JSONprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+JSONprint.swift"; sourceTree = "<group>"; };
+		048A9C10288564EF004D33E0 /* AuthorOfFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorOfFeedTableViewCell.swift; sourceTree = "<group>"; };
+		048A9C122885650C004D33E0 /* TextOfFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextOfFeedTableViewCell.swift; sourceTree = "<group>"; };
+		048A9C1428856536004D33E0 /* PhotoOfFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoOfFeedTableViewCell.swift; sourceTree = "<group>"; };
+		048A9C162885654F004D33E0 /* LikeCountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCountTableViewCell.swift; sourceTree = "<group>"; };
 		049CF412286747D7008DAF86 /* client-vk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "client-vk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		049CF415286747D7008DAF86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		049CF417286747D7008DAF86 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +72,7 @@
 		049CF43D286B1324008DAF86 /* GroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsVC.swift; sourceTree = "<group>"; };
 		049CF441286B1CB9008DAF86 /* UIView+PinEdges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+PinEdges.swift"; sourceTree = "<group>"; };
 		049CF443286B20D8008DAF86 /* FriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCell.swift; sourceTree = "<group>"; };
+		04A953DD2886D67C00BB8765 /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
 		04C0A39C2872AC8B00604DC0 /* GroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsCell.swift; sourceTree = "<group>"; };
 		04C0A39E2872ADE700604DC0 /* GroupsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsApi.swift; sourceTree = "<group>"; };
 		04C0A3A02872AE1900604DC0 /* GroupsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsResponse.swift; sourceTree = "<group>"; };
@@ -97,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				040231F228803673003AB343 /* AlertController.swift */,
+				0422A41F2886ABC20050836F /* UIImage + AspectRatio.swift */,
 			);
 			path = CustonViews;
 			sourceTree = "<group>";
@@ -119,6 +132,18 @@
 				04F91B50287BF6480085A9D7 /* NewsResponse.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		048A9C1828856552004D33E0 /* NewsCells */ = {
+			isa = PBXGroup;
+			children = (
+				048A9C10288564EF004D33E0 /* AuthorOfFeedTableViewCell.swift */,
+				048A9C122885650C004D33E0 /* TextOfFeedTableViewCell.swift */,
+				048A9C1428856536004D33E0 /* PhotoOfFeedTableViewCell.swift */,
+				048A9C162885654F004D33E0 /* LikeCountTableViewCell.swift */,
+				04A953DD2886D67C00BB8765 /* EmptyTableViewCell.swift */,
+			);
+			name = NewsCells;
 			sourceTree = "<group>";
 		};
 		049CF409286747D7008DAF86 = {
@@ -262,6 +287,7 @@
 			children = (
 				04F91B4D287BF41D0085A9D7 /* NewsVC.swift */,
 				040231FA28830A80003AB343 /* PostCellModel.swift */,
+				048A9C1828856552004D33E0 /* NewsCells */,
 			);
 			name = News;
 			sourceTree = "<group>";
@@ -349,21 +375,27 @@
 				040231F028803548003AB343 /* AlertVC.swift in Sources */,
 				04C0A39F2872ADE700604DC0 /* GroupsApi.swift in Sources */,
 				040231F328803673003AB343 /* AlertController.swift in Sources */,
+				04A953DE2886D67C00BB8765 /* EmptyTableViewCell.swift in Sources */,
 				040231FB28830A80003AB343 /* PostCellModel.swift in Sources */,
 				048027E2287082C1000E5D6B /* Data+JSONprint.swift in Sources */,
+				048A9C1528856536004D33E0 /* PhotoOfFeedTableViewCell.swift in Sources */,
 				040231F928817538003AB343 /* GroupsDetailsVC.swift in Sources */,
 				04C0A3A12872AE1900604DC0 /* GroupsResponse.swift in Sources */,
 				049CF444286B20D8008DAF86 /* FriendsCell.swift in Sources */,
 				049CF43C286B12D5008DAF86 /* MainTabBarVC.swift in Sources */,
+				048A9C172885654F004D33E0 /* LikeCountTableViewCell.swift in Sources */,
 				049CF42F2869D656008DAF86 /* FriendVC.swift in Sources */,
 				04C0A39D2872AC8B00604DC0 /* GroupsCell.swift in Sources */,
 				04F91B51287BF6480085A9D7 /* NewsResponse.swift in Sources */,
+				0422A4202886ABC20050836F /* UIImage + AspectRatio.swift in Sources */,
 				049CF442286B1CB9008DAF86 /* UIView+PinEdges.swift in Sources */,
 				04F91B53287BF6600085A9D7 /* NewsApi.swift in Sources */,
 				049CF41A286747D7008DAF86 /* AuthVC.swift in Sources */,
 				049CF43E286B1324008DAF86 /* GroupsVC.swift in Sources */,
+				048A9C11288564EF004D33E0 /* AuthorOfFeedTableViewCell.swift in Sources */,
 				040231EE287ED076003AB343 /* GroupsWithPresenter.swift in Sources */,
 				049CF416286747D7008DAF86 /* AppDelegate.swift in Sources */,
+				048A9C132885650C004D33E0 /* TextOfFeedTableViewCell.swift in Sources */,
 				04C0A3A32872D82500604DC0 /* FriendsResponses.swift in Sources */,
 				04F91B4C287A9BCF0085A9D7 /* VKError.swift in Sources */,
 				049CF418286747D7008DAF86 /* SceneDelegate.swift in Sources */,

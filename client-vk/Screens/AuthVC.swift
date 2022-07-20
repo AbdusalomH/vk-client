@@ -27,7 +27,6 @@ class AuthVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         setupViews()
         setupConstrains()
         authorizeToVK()
@@ -66,10 +65,10 @@ class AuthVC: UIViewController {
         guard let url = urlComponents.url else { return }
         
         let request = URLRequest(url: url)
+        
         DispatchQueue.main.async {
             self.webView.load(request)
         }
-        
     }
     
 }
@@ -80,7 +79,6 @@ extension AuthVC: WKNavigationDelegate {
 
         
         guard let url = navigationResponse.response.url, url.path == "/blank.html", let fragment = url.fragment  else {
-
             decisionHandler(.allow)
             return
         }
@@ -106,12 +104,10 @@ extension AuthVC: WKNavigationDelegate {
         Session.shared.expiresIn = Int(expiresIn) ?? 0
         
         print("авторизация токен \(token)")
-        
 
         let mainTabBarVC = MainTabBarVC()
         navigationController?.pushViewController(mainTabBarVC, animated: true)
         
         decisionHandler(.cancel)
-        
     }
 }

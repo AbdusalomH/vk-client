@@ -26,7 +26,7 @@ class NewsApi {
                                     URLQueryItem(name: "start_time", value: "\(2022)"),
                                     URLQueryItem(name: "items", value: "note, text, photos, date, source_id"),
                                     URLQueryItem(name: "photos", value: "src, src_big"),
-                                    URLQueryItem(name: "count", value: "10"),
+                                    URLQueryItem(name: "count", value: "20"),
                                     URLQueryItem(name: "v", value: Session.shared.v),]
         
         guard let url = urlComponenst.url else {return}
@@ -48,6 +48,7 @@ class NewsApi {
           let decoder = JSONDecoder()
 
             do {
+                
               let newsResponse = try decoder.decode(NewsJSON.self, from: newsData)
               let newsItems = newsResponse.response?.items ?? []
               let newsGroups = newsResponse.response?.groups ?? []
