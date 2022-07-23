@@ -41,13 +41,21 @@ class MainTabBarVC: UITabBarController {
         group2.tabBarItem = groupWithPresenter
         
         
+        let videos = VideoVC()
+        let videoBarItem = UITabBarItem()
+        videoBarItem.title = "Videos"
+        videoBarItem.image = UIImage(systemName: "video.square")
+        videos.tabBarItem = videoBarItem
+        
+        
         
         let navigationFiendsVC = UINavigationController(rootViewController: friends)
         let navigationGroupsVC = UINavigationController(rootViewController: groups)
         let navigationNewsVC = UINavigationController(rootViewController: news)
         let navigationGroup2VC = UINavigationController(rootViewController: group2)
+        let navigationVideos = UINavigationController(rootViewController: videos)
         
-        self.viewControllers = [navigationFiendsVC, navigationNewsVC, navigationGroupsVC,navigationGroup2VC]
+        self.viewControllers = [navigationFiendsVC, navigationNewsVC, navigationGroupsVC,navigationGroup2VC, navigationVideos]
         
     }
 
