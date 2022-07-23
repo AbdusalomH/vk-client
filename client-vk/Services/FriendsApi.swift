@@ -22,7 +22,7 @@ class FriendsApi {
         
         urlComponents.queryItems = [URLQueryItem(name: "user_id", value: "\(Session.shared.userid)"),
                                     URLQueryItem(name: "order", value: "name"),
-                                    URLQueryItem(name: "count", value: "15"),
+                                    URLQueryItem(name: "count", value: "20"),
                                     URLQueryItem(name: "offset", value: "\(offset)"),
                                     URLQueryItem(name: "fields", value: "bdate, city, photo_100, country, photo_200_orig"),
                                     URLQueryItem(name: "v", value:  Session.shared.v),

@@ -57,7 +57,7 @@ class AuthorOfFeedTableViewCell: UITableViewCell {
         postDate.font = UIFont.systemFont(ofSize: 12, weight: .light)
         postDate.textAlignment = .left
         
-        let marginConterView = contentView.layoutMarginsGuide
+        //let marginConterView = contentView.layoutMarginsGuide
         
         
         NSLayoutConstraint.activate([

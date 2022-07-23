@@ -19,7 +19,6 @@ class GroupsVC: UIViewController {
     
     
     var searchResults: [Group] = []
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()

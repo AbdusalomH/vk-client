@@ -67,7 +67,7 @@ final class FriendVC: UIViewController {
     func showSkeleton() {
         if !isAddedToSkeleton {
             self.tableView.isSkeletonable = true
-            self.tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: UIColor.gray), animation: nil,transition: .crossDissolve(0.5))
+            self.tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: UIColor.gray), animation: nil, transition: .crossDissolve(0.5))
             self.tableView.startSkeletonAnimation()
             self.isAddedToSkeleton = true
         }
@@ -87,6 +87,7 @@ final class FriendVC: UIViewController {
                 switch result {
                     
                 case  .success(let friends):
+                    
                     if offset == 0 {
                         self.friends = friends
                         self.tableView.stopSkeletonAnimation()
