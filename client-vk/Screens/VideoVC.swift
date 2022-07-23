@@ -13,8 +13,12 @@ import AVFoundation
 
 class VideoVC: UIViewController, UITableViewDelegate, SkeletonTableViewDataSource {
     
+
+    
     var videosTabelview: UITableView!
     var videos: [VideosItems] = []
+    var filteredVideos: [VideosItems] = []
+    
     var isAddedToSkeleton: Bool = false
     
     var isReceivingVideoData: Bool = false
@@ -25,8 +29,22 @@ class VideoVC: UIViewController, UITableViewDelegate, SkeletonTableViewDataSourc
         view.backgroundColor = .white
         title = "Videos"
         configureTabelView()
+        configureSearch()
         showSkeleton()
         showVideosData()
+    }
+    
+    func configureSearch() {
+        
+        let searchVideo = UISearchController()
+        searchVideo.searchResultsUpdater = self
+        searchVideo.searchBar.delegate = self
+        searchVideo.searchBar.placeholder = "Search video"
+        searchVideo.becomeFirstResponder()
+        
+        navigationItem.searchController = searchVideo
+        
+        
     }
 
     
@@ -100,18 +118,32 @@ class VideoVC: UIViewController, UITableViewDelegate, SkeletonTableViewDataSourc
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if !filteredVideos.isEmpty {
+            return filteredVideos.count
+        }
         return videos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: VideoCell.reuseID, for: indexPath) as! VideoCell
-        let video = videos[indexPath.row]
-        let videoDuration = video.duration ?? 0
-        let (h,m,s) = secondsToHoursMinutesSeconds(videoDuration)
-        let imageQuality = video.image[2].url
+  
+        if !filteredVideos.isEmpty {
+            
+            let filteredVideo = filteredVideos[indexPath.row]
+            let filtervideoDuration = filteredVideo.duration ?? 0
+            let (h,m,s) = secondsToHoursMinutesSeconds(filtervideoDuration)
+            let imageQuality = filteredVideo.image[2].url
+            cell.configData(title: filteredVideo.title ?? "", imageName: imageQuality ?? "", videohours: h, videoMinutes: m, videoSeconds: s)
+            
+        } else {
+            let video = videos[indexPath.row]
+            let videoDuration = video.duration ?? 0
+            let (h,m,s) = secondsToHoursMinutesSeconds(videoDuration)
+            let imageQuality = video.image[2].url
+            cell.configData(title: video.title ?? "", imageName: imageQuality ?? "", videohours: h, videoMinutes: m, videoSeconds: s)
+        }
 
-        cell.configData(title: video.title ?? "", imageName: imageQuality ?? "", videohours: h, videoMinutes: m, videoSeconds: s)
         return cell
     }
     
@@ -138,7 +170,6 @@ class VideoVC: UIViewController, UITableViewDelegate, SkeletonTableViewDataSourc
     
     
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
-        
        return VideoCell.reuseID
         
     }
@@ -156,3 +187,20 @@ extension VideoVC: UITableViewDataSourcePrefetching {
         }
     } 
 }
+
+
+extension VideoVC: UISearchResultsUpdating, UISearchBarDelegate  {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        guard let text = searchController.searchBar.text, !text.isEmpty else {return}
+        
+        filteredVideos = videos.filter({$0.title!.lowercased().contains(text.lowercased())})
+        videosTabelview.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        filteredVideos.removeAll()
+        videosTabelview.reloadData()
+    }  
+}
+
