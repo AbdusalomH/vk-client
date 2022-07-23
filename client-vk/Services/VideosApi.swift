@@ -41,7 +41,6 @@ class VideosApi {
             
             guard let data = data else {return}
             let decoder = JSONDecoder()
-            print(data.prettyPrintedJSONString)
             
             do {
                 let videoos = try decoder.decode(VideosRequest.self, from: data)
