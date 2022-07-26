@@ -15,47 +15,63 @@ class GroupsVC: UIViewController {
     var groups: [Group] = []
     var filteredGroup: [Group] = []
     
-    var groupTable: UITableView!
-    
-    
-    var searchResults: [Group] = []
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    lazy var groupTable: UITableView = {
         
-        title = "Groups"
-        
-        view.backgroundColor = .gray
-        configureGroupTable()
-        configureSearchController()
-        getGroupData()
-        configureReceivedData()
-        configureSearchController()
-        
-    }
+        let tabelView = UITableView()
+        tabelView.register(GroupsCell.self, forCellReuseIdentifier: GroupsCell.reuseID)
+        tabelView.delegate = self
+        tabelView.dataSource = self
+        tabelView.rowHeight = 70
+        return tabelView
+    }()
     
-    private func configureSearchController() {
+    lazy var searchController: UISearchController = {
         let searchController                                     = UISearchController()
         searchController.searchResultsUpdater                    = self
         searchController.searchBar.delegate                      = self
         searchController.searchBar.placeholder                   = "Search for a group"
         searchController.obscuresBackgroundDuringPresentation    = false
         searchController.becomeFirstResponder()
-        navigationItem.searchController                          = searchController
+        return searchController
+    }()
+    
+    
+    var searchResults: [Group] = []
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupViews()
+        setupContraints()
+        setupSkeleton()
+        fetchGroups()
+        
+    }
+    
+    private func setupViews() {
+        title = "Groups"
+        view.backgroundColor = .gray
+        navigationItem.searchController = searchController
+        view.addSubview(groupTable)
+        
+    }
+    
+    private func setupContraints() {
+        groupTable.pinToEdges(to: view)
     }
     
     
-    func getGroupData() {
+    func setupSkeleton() {
         if !isShownSkeleton {
             groupTable.isSkeletonable = true
-            groupTable.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .gray), animation: nil, transition: .crossDissolve(0.25))
+            groupTable.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .gray), animation: nil, transition: .crossDissolve(0.5))
             groupTable.startSkeletonAnimation()
             isShownSkeleton = true
         }
     }
     
     
-    private func configureReceivedData() {
+    private func fetchGroups() {
         
     let service = GroupsApi()
         
@@ -64,7 +80,7 @@ class GroupsVC: UIViewController {
                 switch result {
                 case .success(let groups):
                     self.groupTable.stopSkeletonAnimation()
-                    self.groupTable.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.2))
+                    self.groupTable.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.5))
                     self.groups = groups
                     self.groupTable.reloadData()
                     
@@ -74,17 +90,6 @@ class GroupsVC: UIViewController {
                 }
             }
         }
-    }
-    
-    private func configureGroupTable() {
-        
-        groupTable = UITableView()
-        view.addSubview(groupTable)
-        groupTable.register(GroupsCell.self, forCellReuseIdentifier: GroupsCell.reuseID)
-        groupTable.delegate = self
-        groupTable.dataSource = self
-        groupTable.rowHeight = 70
-        groupTable.pinToEdges(to: view)
     }
 }
 

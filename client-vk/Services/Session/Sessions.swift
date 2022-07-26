@@ -1,12 +1,11 @@
 //
-//  Session.swift
+//  Sessions.swift
 //  client-vk
 //
-//  Created by Mac on 6/27/22.
+//  Created by Mac on 7/25/22.
 //
 
 import Foundation
-
 
 class Session {
     

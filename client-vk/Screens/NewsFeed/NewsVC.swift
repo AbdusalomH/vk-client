@@ -18,40 +18,37 @@ enum PostCellType: Int, CaseIterable {
     
 }
 
-class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class NewsVC: UIViewController {
     
     var heightImage: CGFloat = 0
     
-    var newsTableView: UITableView!
-    
     var newsFeed: [PostCellModel] = []
+    
+    lazy var newsTableView: UITableView = {
+        
+        let tableview = UITableView()
+        tableview.translatesAutoresizingMaskIntoConstraints = false
+        tableview.delegate = self
+        tableview.dataSource = self
+        tableview.showsVerticalScrollIndicator = false
+        tableview.estimatedRowHeight = UITableView.automaticDimension
+        
+        tableview.register(AuthorOfFeedTableViewCell.self, forCellReuseIdentifier: AuthorOfFeedTableViewCell.reuseID)
+        tableview.register(TextOfFeedTableViewCell.self, forCellReuseIdentifier: TextOfFeedTableViewCell.reuseID)
+        tableview.register(PhotoOfFeedTableViewCell.self, forCellReuseIdentifier: PhotoOfFeedTableViewCell.reuseID)
+        tableview.register(LikeCountTableViewCell.self, forCellReuseIdentifier: LikeCountTableViewCell.reuseID)
+        tableview.register(EmptyTableViewCell.self, forCellReuseIdentifier: EmptyTableViewCell.reuseID)
+        return tableview
+    }()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "News"
         configureNavigatioBar()
-        configureTableView()
-                
-        view.backgroundColor = #colorLiteral(red: 0.9502168298, green: 0.9445304871, blue: 0.9708524346, alpha: 1)
-        let newsService = NewsApi()
-        newsService.getNews { [weak self] result in
-            guard let self = self else {return}
-            
-            switch result {
-            case .success(let posts):
-                DispatchQueue.main.async {
-                    self.newsFeed = posts
-                    self.newsTableView.reloadData()
-                }
-                
-                
-            case .failure(let error):
-                print(error)
-            }
-        }
+        setupViews()
+        setupContraints()
+        fetchNews()
     }
-    
     
     private func configureNavigatioBar() {
         let navBarAppearance = UINavigationBarAppearance()
@@ -64,37 +61,47 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    private func configureTableView() {
-        
-        newsTableView = UITableView()
+    private func setupViews() {
+        title = "News"
+        view.backgroundColor = #colorLiteral(red: 0.9502168298, green: 0.9445304871, blue: 0.9708524346, alpha: 1)
         view.addSubview(newsTableView)
-        newsTableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        newsTableView.delegate = self
-        newsTableView.dataSource = self
-        
-        newsTableView.showsVerticalScrollIndicator = false
-        //newsTableView.backgroundColor = .white
-        
-        newsTableView.register(AuthorOfFeedTableViewCell.self, forCellReuseIdentifier: AuthorOfFeedTableViewCell.reuseID)
-        newsTableView.register(TextOfFeedTableViewCell.self, forCellReuseIdentifier: TextOfFeedTableViewCell.reuseID)
-        newsTableView.register(PhotoOfFeedTableViewCell.self, forCellReuseIdentifier: PhotoOfFeedTableViewCell.reuseID)
-        newsTableView.register(LikeCountTableViewCell.self, forCellReuseIdentifier: LikeCountTableViewCell.reuseID)
-        newsTableView.register(EmptyTableViewCell.self, forCellReuseIdentifier: EmptyTableViewCell.reuseID)
-        
-        newsTableView.estimatedRowHeight = UITableView.automaticDimension
-        newsTableView.cellLayoutMarginsFollowReadableWidth = true
-        
-        //newsTableView.separatorStyle = .none
+    }
+
+    
+    private func setupContraints() {
         
         NSLayoutConstraint.activate([
-        
             newsTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             newsTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             newsTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             newsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+    
+    
+    func fetchNews() {
+        let newsService = NewsApi()
+        newsService.getNews { [weak self] result in
+            guard let self = self else {return}
+            
+            switch result {
+                
+            case .success(let posts):
+                DispatchQueue.main.async {
+                    self.newsFeed = posts
+                    self.newsTableView.reloadData()
+                }
+                
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+}
+
+extension NewsVC: UITableViewDelegate, UITableViewDataSource {
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return newsFeed.count
@@ -135,7 +142,7 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         case .photo:
             let cell = tableView.dequeueReusableCell(withIdentifier: PhotoOfFeedTableViewCell.reuseID, for: indexPath) as! PhotoOfFeedTableViewCell
             
-            cell.config(imageName: item.imageURL)          
+            cell.config(imageName: item.imageURL)
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
 
             return cell

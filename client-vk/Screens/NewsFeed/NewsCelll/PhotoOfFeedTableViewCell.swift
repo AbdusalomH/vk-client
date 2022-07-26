@@ -35,7 +35,7 @@ class PhotoOfFeedTableViewCell: UITableViewCell {
     func config(imageName: String) {
         guard let url = URL(string: imageName) else {return}
         
-        postImage.sd_setImage(with: url, placeholderImage: UIImage(named: "screen"), options: [.progressiveLoad], completed: nil)
+        postImage.sd_setImage(with: url)
     }
 
     func configure() {
@@ -43,7 +43,7 @@ class PhotoOfFeedTableViewCell: UITableViewCell {
         
         postImage.translatesAutoresizingMaskIntoConstraints = false
         
-        postImage.contentMode = .scaleAspectFit
+        //postImage.contentMode = .scaleAspectFit
         postImage.clipsToBounds = true
         
 
