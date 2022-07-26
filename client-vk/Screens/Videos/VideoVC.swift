@@ -13,43 +13,57 @@ import AVFoundation
 
 class VideoVC: UIViewController, UITableViewDelegate, SkeletonTableViewDataSource {
     
-
-    
-    var videosTabelview: UITableView!
     var videos: [VideosItems] = []
     var filteredVideos: [VideosItems] = []
     
     var isAddedToSkeleton: Bool = false
     
     var isReceivingVideoData: Bool = false
- 
+
+    
+    lazy var videosTabelview: UITableView = {
+        
+        let tableview = UITableView()
+        tableview.register(VideoCell.self, forCellReuseIdentifier: VideoCell.reuseID)
+        tableview.translatesAutoresizingMaskIntoConstraints = false
+        tableview.delegate = self
+        tableview.dataSource = self
+        tableview.prefetchDataSource = self
+        tableview.estimatedRowHeight = 150
+        return tableview
+    }()
+    
+    lazy var searchVideo:  UISearchController = {
+        let search = UISearchController()
+        search.searchResultsUpdater = self
+        search.searchBar.delegate = self
+        search.searchBar.placeholder = "Search video"
+        search.becomeFirstResponder()
+        return search
+    }()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupViews()
+        setupContraints()
+        setupSkeleton()
+        fetchVideos(offSet: 0)
+    }
+    
+    private func setupViews() {
         view.backgroundColor = .white
         title = "Videos"
-        configureTabelView()
-        configureSearch()
-        showSkeleton()
-        showVideosData()
+        navigationItem.searchController = searchVideo
+        view.addSubview(videosTabelview)
     }
     
-    func configureSearch() {
-        
-        let searchVideo = UISearchController()
-        searchVideo.searchResultsUpdater = self
-        searchVideo.searchBar.delegate = self
-        searchVideo.searchBar.placeholder = "Search video"
-        searchVideo.becomeFirstResponder()
-        
-        navigationItem.searchController = searchVideo
-        
-        
+    private func setupContraints() {
+        videosTabelview.pinToEdges(to: view)
     }
 
     
-    
-    func showSkeleton() {
+    private func setupSkeleton() {
         if isAddedToSkeleton == false {
             self.videosTabelview.isSkeletonable = true
             self.videosTabelview.startSkeletonAnimation()
@@ -59,7 +73,7 @@ class VideoVC: UIViewController, UITableViewDelegate, SkeletonTableViewDataSourc
     }
     
     
-    func showVideosData(offSet: Int = 0) {
+    func fetchVideos(offSet: Int = 0) {
         
         if isAddedToSkeleton {
             
@@ -90,31 +104,7 @@ class VideoVC: UIViewController, UITableViewDelegate, SkeletonTableViewDataSourc
         }
     }
     
-    func configureTabelView() {
-        
-        videosTabelview = UITableView()
-        
-        view.addSubview(videosTabelview)
-        
-        videosTabelview.register(VideoCell.self, forCellReuseIdentifier: VideoCell.reuseID)
-        
-        videosTabelview.translatesAutoresizingMaskIntoConstraints = false
-        
-        videosTabelview.delegate = self
-        videosTabelview.dataSource = self
-        videosTabelview.prefetchDataSource = self
-        
-        videosTabelview.estimatedRowHeight = 150
-        
-        NSLayoutConstraint.activate([
-        
-            videosTabelview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            videosTabelview.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            videosTabelview.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            videosTabelview.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        
-        ])
-    }
+
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -150,20 +140,6 @@ class VideoVC: UIViewController, UITableViewDelegate, SkeletonTableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         guard let videoURL = videos[indexPath.row].player else {return}
-//        print(videoURL)
-//
-//        guard let url = URL(string: videoURL) else {return}
-//
-//        let playerVC = AVPlayerViewController()
-//        let player = AVPlayer(url: url)
-//        playerVC.player = player
-//
-//
-//        present(playerVC, animated: true) {
-//            playerVC.player?.play()
-//        }
-        
-        
         let playVC = VideoDetailsVC(videolUrl: videoURL)
         navigationController?.pushViewController(playVC, animated: true)
     }
@@ -183,7 +159,7 @@ extension VideoVC: UITableViewDataSourcePrefetching {
         
         if videosCount > videos.count - 7, !isReceivingVideoData {
             isReceivingVideoData = true
-            showVideosData(offSet: videosCount)
+            fetchVideos(offSet: videosCount)
         }
     } 
 }

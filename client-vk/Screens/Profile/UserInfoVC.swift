@@ -24,23 +24,47 @@ class UserInfoVC: UIViewController {
     
     var isSkeletonShown: Bool = false
     
-    let userImage = UIImageView()
-    let userFullName = UILabel()
-    let location = UILabel()
+    lazy var userImage: UIImageView = {
+        
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isSkeletonable = true
+        image.contentMode = .scaleAspectFill
+        image.layer.cornerRadius = 50
+        image.clipsToBounds = true
+        image.image = UIImage(systemName: "person")
+        
+        return image
+    }()
+    
+    
+    lazy var userFullName: UILabel = {
+        let userFullName = UILabel()
+        userFullName.translatesAutoresizingMaskIntoConstraints = false
+        userFullName.isSkeletonable = true
+        userFullName.font = UIFont.systemFont(ofSize: 22, weight: .regular)
+        return userFullName
+    }()
+    
+    
+    lazy var location: UILabel = {
+        let location = UILabel()
+        location.translatesAutoresizingMaskIntoConstraints = false
+        location.isSkeletonable = true
+        location.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        return location
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.largeTitleDisplayMode = .never
-        title = usersInfo.firstName
-        view.backgroundColor = .white
-        
-        configure()
-        shoSkeleton()
+        setupViews()
+        setupConstraints()
+        setupSkeleton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        configureUsersData()
+        fetchFriendsData()
     }
     
     
@@ -50,27 +74,16 @@ class UserInfoVC: UIViewController {
         userImage.clipsToBounds = true
     }
     
-    private func configure() {
-        
+    private func setupViews() {
         view.addSubview(userImage)
         view.addSubview(userFullName)
         view.addSubview(location)
-        
-        userImage.translatesAutoresizingMaskIntoConstraints = false
-        userFullName.translatesAutoresizingMaskIntoConstraints = false
-        location.translatesAutoresizingMaskIntoConstraints = false
-        
-        userImage.isSkeletonable = true
-        userFullName.isSkeletonable = true
-        location.isSkeletonable = true
-        
-        userFullName.font = UIFont.systemFont(ofSize: 22, weight: .regular)
-        location.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        
-        userImage.contentMode = .scaleAspectFill
-        userImage.layer.cornerRadius = 50
-        userImage.clipsToBounds = true
-        userImage.image = UIImage(systemName: "person")
+        navigationItem.largeTitleDisplayMode = .never
+        title = usersInfo.firstName
+        view.backgroundColor = .white
+    }
+    
+    private func setupConstraints() {
         
         NSLayoutConstraint.activate([
             userImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -90,7 +103,8 @@ class UserInfoVC: UIViewController {
         ])
     }
     
-    func configureUsersData() {
+    
+    func fetchFriendsData() {
         if isSkeletonShown == false {
             let url = URL(string: usersInfo.photo200_Orig)
             userImage.stopSkeletonAnimation()
@@ -109,7 +123,7 @@ class UserInfoVC: UIViewController {
         }
     }
     
-    func shoSkeleton() {
+    func setupSkeleton() {
         if !isSkeletonShown {
             userImage.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .gray), animation: nil, transition: .crossDissolve(0.2))
             userFullName.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .gray), animation: nil, transition: .crossDissolve(0.2))
