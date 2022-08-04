@@ -10,35 +10,6 @@ import UIKit
 import SkeletonView
 
 
-final class FriendsViewModel {
-    
-
-    var isAddedToSkeleton: Bool = false
-
-    let service = FriendsApi()
-        
-    var friends: [Friend] = []
-    
-    var isReqestingFriends: Bool = false
-    
-    func fetchFriends(offset: Int = 0, success: @escaping ()->(), failure: @escaping (Error) -> ()) {
-        Api.request(endpoint: FriendsEndpong.fetchFriends(offset: offset), responseModel: FriendResponse.self) { result in
-            
-            switch result {
-            case .success(let friends):
-                self.friends = friends.items
-                success()
-                return
-            case .failure(let error):
-                print(error)
-                failure(error)
-            }
-        }
-    }
-}
-
-
-
 final class FriendVC: UIViewController {
 
     private var viewModel = FriendsViewModel()
