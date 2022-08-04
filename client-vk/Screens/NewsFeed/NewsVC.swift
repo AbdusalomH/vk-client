@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 enum PostCellType: Int, CaseIterable {
     
     case author = 0
@@ -23,6 +22,7 @@ final class NewsVC: UIViewController {
     var heightImage: CGFloat = 0
     
     var newsFeed: [PostCellModel] = []
+    
     
     lazy var newsTableView: UITableView = {
         
@@ -48,6 +48,11 @@ final class NewsVC: UIViewController {
         setupViews()
         setupContraints()
         fetchNews()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        newsTableView.reloadData()
     }
     
     private func configureNavigatioBar() {
@@ -91,7 +96,6 @@ final class NewsVC: UIViewController {
                     self.newsFeed = posts
                     self.newsTableView.reloadData()
                 }
-                
                 
             case .failure(let error):
                 print(error)

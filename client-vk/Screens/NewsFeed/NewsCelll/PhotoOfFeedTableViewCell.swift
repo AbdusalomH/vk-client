@@ -12,7 +12,7 @@ class PhotoOfFeedTableViewCell: UITableViewCell {
     
     static let reuseID = "photoCell"
     
-    var newValue: URLSessionDataTask?
+//    var newValue: URLSessionDataTask?
     
     let postImage = ScaledHeightImageView()
     
@@ -26,15 +26,16 @@ class PhotoOfFeedTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        newValue?.cancel()
-    }
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//        newValue?.cancel()
+//    }
     
     
     func config(imageName: String) {
         guard let url = URL(string: imageName) else {return}
         
+        //postImage.sd_setImage(with: url)
         postImage.sd_setImage(with: url)
     }
 
@@ -42,8 +43,6 @@ class PhotoOfFeedTableViewCell: UITableViewCell {
         contentView.addSubview(postImage)
         
         postImage.translatesAutoresizingMaskIntoConstraints = false
-        
-        //postImage.contentMode = .scaleAspectFit
         postImage.clipsToBounds = true
         
 
