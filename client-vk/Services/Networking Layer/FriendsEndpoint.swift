@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum FriendsEndpong: Endpoint {
+enum FriendsEndpoint: Endpoint {
     
     case fetchFriends(offset:Int)
     
