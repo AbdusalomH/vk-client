@@ -49,6 +49,7 @@ class VideoVC: UIViewController, UITableViewDelegate, SkeletonTableViewDataSourc
         setupContraints()
         setupSkeleton()
         fetchVideos(offSet: 0)
+        
     }
     
     private func setupViews() {
@@ -72,37 +73,69 @@ class VideoVC: UIViewController, UITableViewDelegate, SkeletonTableViewDataSourc
         }
     }
     
+    private func fetchVideos2(offSet: Int = 0, success: @escaping ()->(), failure: @escaping (Error) -> ()) {
+        
+        Api.request(endpoint: VideosEndpoint.fetchVideos(offset: offSet), responseModel: VideosResponse.self) { result in
+            
+            switch result {
+            case .success(let revievedvideo):
+                if offSet == 0 {
+                    self.videosTabelview.stopSkeletonAnimation()
+                    self.videosTabelview.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.2))
+                    self.videos = revievedvideo.items
+                    self.videosTabelview.reloadData()
+                    success()
+                    return
+                }
+                self.videos.append(contentsOf: revievedvideo.items)
+                self.videosTabelview.reloadData()
+                
+            case .failure(let error):
+                failure(error)
+                print(error)
+            }
+        }
+    }
+    
     
     func fetchVideos(offSet: Int = 0) {
         
         if isAddedToSkeleton {
-            
-            let videos = VideosApi()
-            videos.getVideos(offset: offSet) { [weak self] result in
-                guard let self = self else {return}
-                
-                self.isReceivingVideoData = false
-                
-                switch result {
-                case .success(let videos):
-                    if offSet == 0 {
-                        self.videosTabelview.stopSkeletonAnimation()
-                        self.videosTabelview.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.2))
-                        self.videos.append(contentsOf: videos)
-                        self.videosTabelview.reloadData()
-                        return
-                    }
-                    
-                    self.videos.append(contentsOf: videos)
-                    self.videosTabelview.reloadData()
-                    
-                case .failure(let error):
-                    print(error)
-                    
-                }
+            fetchVideos2(offSet: offSet) {
+                self.videosTabelview.stopSkeletonAnimation()
+                self.videosTabelview.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.2))
+                self.videosTabelview.reloadData()
+            } failure: { error in
+                print(error)
             }
         }
     }
+            
+            
+//
+//            let videos = VideosApi()
+//            videos.getVideos(offset: offSet) { [weak self] result in
+//                guard let self = self else {return}
+//
+//                self.isReceivingVideoData = false
+//
+//                switch result {
+//                case .success(let videos):
+//                    if offSet == 0 {
+//
+//                        return
+//                    }
+//
+//                    self.videos.append(contentsOf: videos)
+//                    self.videosTabelview.reloadData()
+//
+//                case .failure(let error):
+//                    print(error)
+//
+//                }
+//            }
+//        }
+
     
 
     
