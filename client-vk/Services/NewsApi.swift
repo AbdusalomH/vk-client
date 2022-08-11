@@ -64,7 +64,7 @@ class NewsApi {
                     var authorName = ""
                     var authorImageURL = ""
                     let postText = post.text ?? ""
-                    let postImage = post.attachments?.first?.photo?.sizes?.last?.url ?? ""
+                    let lowPostQualityImage = post.attachments?.first?.photo?.sizes?[2].url ?? ""
                     let postLike = post.likes?.count ?? 0
                     
                     if sourceID < 0 {
@@ -84,7 +84,7 @@ class NewsApi {
                     }
                     
                     
-                    let cellModel = PostCellModel(authorName: authorName, authorImageURL: authorImageURL, text: postText, imageURL: postImage, likesCount: postLike)
+                    let cellModel = PostCellModel(authorName: authorName, authorImageURL: authorImageURL, text: postText, imageURL: lowPostQualityImage, likesCount: postLike)
                     
                     cellModels.append(cellModel)
                     

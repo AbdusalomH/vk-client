@@ -119,7 +119,8 @@ extension GroupsVC: UITableViewDataSource, UITableViewDelegate, SkeletonTableVie
         
         if !viewModel.filteredGroup.isEmpty {
             let selectedGroup = viewModel.filteredGroup[indexPath.row]
-            let groupDetail = UINavigationController(rootViewController:  GroupsDetailsVC(title: selectedGroup.name, image: selectedGroup.photo200))
+            print(selectedGroup.id)
+            let groupDetail = UINavigationController(rootViewController:  GroupsDetailsVC(title: selectedGroup.name, image: selectedGroup.photo200, id: -selectedGroup.id))
             if let groupSheetMenu = groupDetail.sheetPresentationController {
                 
                 groupSheetMenu.detents = [.medium(), .large()]
@@ -133,8 +134,8 @@ extension GroupsVC: UITableViewDataSource, UITableViewDelegate, SkeletonTableVie
         } else {
             
             let selectedGroup = viewModel.groups[indexPath.row]
-            
-            let groupDetail = UINavigationController(rootViewController:  GroupsDetailsVC(title: selectedGroup.name, image: selectedGroup.photo200))
+            print(selectedGroup.id)
+            let groupDetail = UINavigationController(rootViewController:  GroupsDetailsVC(title: selectedGroup.name, image: selectedGroup.photo200, id: (-selectedGroup.id)))
             if let groupSheetMenu = groupDetail.sheetPresentationController {
                 
                 groupSheetMenu.detents = [.medium(), .large()]

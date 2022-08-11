@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 enum PostCellType: Int, CaseIterable {
     
     case author = 0
@@ -23,6 +22,7 @@ final class NewsVC: UIViewController {
     var heightImage: CGFloat = 0
     
     var newsFeed: [PostCellModel] = []
+    
     
     lazy var newsTableView: UITableView = {
         
@@ -48,6 +48,11 @@ final class NewsVC: UIViewController {
         setupViews()
         setupContraints()
         fetchNews()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        newsTableView.reloadData()
     }
     
     private func configureNavigatioBar() {
@@ -91,7 +96,6 @@ final class NewsVC: UIViewController {
                     self.newsFeed = posts
                     self.newsTableView.reloadData()
                 }
-                
                 
             case .failure(let error):
                 print(error)
@@ -140,6 +144,7 @@ extension NewsVC: UITableViewDelegate, UITableViewDataSource {
             return cell
 
         case .photo:
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: PhotoOfFeedTableViewCell.reuseID, for: indexPath) as! PhotoOfFeedTableViewCell
             
             cell.config(imageName: item.imageURL)
@@ -148,17 +153,16 @@ extension NewsVC: UITableViewDelegate, UITableViewDataSource {
             return cell
 
         case .likeCount:
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: LikeCountTableViewCell.reuseID, for: indexPath) as! LikeCountTableViewCell
             
             cell.config(likeCounts: item.likesCount)
             cell.layer.cornerRadius = 20
-                        
             return cell
             
         case .empty:
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: EmptyTableViewCell.reuseID, for: indexPath) as! EmptyTableViewCell
-            
-            
             return cell
             
         default:
