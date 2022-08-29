@@ -143,6 +143,7 @@ extension NewsVC: UITableViewDelegate, UITableViewDataSource {
             return cell
 
         case .photo:
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: PhotoOfFeedTableViewCell.reuseID, for: indexPath) as! PhotoOfFeedTableViewCell
             
             cell.config(imageName: item.imageURL)
@@ -151,17 +152,16 @@ extension NewsVC: UITableViewDelegate, UITableViewDataSource {
             return cell
 
         case .likeCount:
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: LikeCountTableViewCell.reuseID, for: indexPath) as! LikeCountTableViewCell
             
             cell.config(likeCounts: item.likesCount)
             cell.layer.cornerRadius = 20
-                        
             return cell
             
         case .empty:
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: EmptyTableViewCell.reuseID, for: indexPath) as! EmptyTableViewCell
-            
-            
             return cell
             
         default:

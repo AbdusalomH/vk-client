@@ -13,7 +13,6 @@ class PhotoOfFeedTableViewCell: UITableViewCell {
     
     static let reuseID = "photoCell"
     
-//    var newValue: URLSessionDataTask?
     
     lazy var postImage: UIImageView = {
         let image = UIImageView()
@@ -34,20 +33,14 @@ class PhotoOfFeedTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//        newValue?.cancel()
-//    }
-    
     
     func config(imageName: String) {
         guard let url = URL(string: imageName) else {return}
         
-        //postImage.sd_setImage(with: url)
-        //postImage.sd_setImage(with: url)
-        //postImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
         postImage.kf.indicatorType = .activity
         postImage.kf.setImage(with: url)
+    }
+
 
     }
     

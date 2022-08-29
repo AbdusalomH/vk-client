@@ -34,7 +34,7 @@ class VideoCell: UITableViewCell {
         let imageUrl = URL(string: imageName)
         videImage.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "screen"))
         
-        duration.text = "\(videohours.addZero()) : \(videoMinutes.addZero()) : \(videoSeconds.addZero())"
+        duration.text = " \(videohours.addZero()) : \(videoMinutes.addZero()) : \(videoSeconds.addZero()) "
     }
     
     func configure() {
@@ -61,6 +61,8 @@ class VideoCell: UITableViewCell {
         
         duration.textColor = .white
         duration.textAlignment = .right
+        duration.backgroundColor = .black
+        
         
         //videImage.contentMode = .scaleAspectFit
         
@@ -85,7 +87,7 @@ class VideoCell: UITableViewCell {
             duration.trailingAnchor.constraint(equalTo: videImage.trailingAnchor, constant: -8),
             duration.topAnchor.constraint(equalTo: videImage.topAnchor, constant: 8),
             duration.heightAnchor.constraint(equalToConstant: 20),
-            duration.widthAnchor.constraint(equalToConstant: 120)
+            
    
         ])
     }
