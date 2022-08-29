@@ -32,14 +32,15 @@ final class FriendVC: UIViewController {
         refresh.addTarget(self, action: #selector(pullToRefreshAction), for: .valueChanged)
         return refresh
     }()
+    
+    var numberoFriends = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
- 
         setupViews()
         setupConstraints()
         setupSkeleton()
-        fetchFriends(offset: 0)
+        fetchFriends(offset: numberoFriends)
         
     }
     
@@ -71,7 +72,7 @@ final class FriendVC: UIViewController {
     }
     
     
-    func fetchFriends(offset: Int = 0) {
+    func fetchFriends(offset: Int) {
         
         if viewModel.isAddedToSkeleton {
             viewModel.fetchFriends(offset: offset) {
@@ -86,10 +87,22 @@ final class FriendVC: UIViewController {
         }
     }
     
+    func fetchNextFriends(offset: Int) {
+        viewModel.fetchFriends(offset: offset) {
+            self.friendsTableView.stopSkeletonAnimation()
+            self.friendsTableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.2))
+            self.friendsTableView.reloadData()
+            
+        } failure: { err in
+            
+            self.presentAlert(title: "Warning", body: err.localizedDescription, button: "Ok")
+        }
+    }
+    
     
     @objc
     func pullToRefreshAction() {
-        fetchFriends()
+        fetchFriends(offset: numberoFriends)
         refreshControll.endRefreshing()
     }
 }
@@ -125,12 +138,12 @@ extension FriendVC: UITableViewDelegate, SkeletonTableViewDataSource {
 extension FriendVC: UITableViewDataSourcePrefetching {
     
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-            let maxNumber = indexPaths.map({$0.last ?? 0}).max() ?? 0
+        let maxNumber = indexPaths.map({$0.last ?? 0}).max() ?? 0
         
-        if maxNumber > viewModel.friends.count - 5, viewModel.isReqestingFriends == false {
-                viewModel.isReqestingFriends = true
-                fetchFriends(offset: maxNumber)
-            }
+        
+        if maxNumber > viewModel.friends.count - 3, viewModel.isReqestingFriends == false {
+                fetchNextFriends(offset: maxNumber)
+        }
     }
 }
     
