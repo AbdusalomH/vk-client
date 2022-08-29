@@ -26,7 +26,7 @@ class AuthVC: UIViewController {
     //Загружена рутовая view и будут известны ее размеры
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .systemBackground
         setupViews()
         setupConstrains()
         authorizeToVK()
@@ -38,7 +38,15 @@ class AuthVC: UIViewController {
     }
     
     func setupConstrains() {
-        webView.pinToEdges(to: view)
+        //webView.pinToEdges(to: view)
+        NSLayoutConstraint.activate([
+        
+            webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            webView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            webView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            webView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+
+        ])
     }
     
     func authorizeToVK() {
@@ -107,6 +115,7 @@ extension AuthVC: WKNavigationDelegate {
 
         let mainTabBarVC = MainTabBarVC()
         navigationController?.pushViewController(mainTabBarVC, animated: true)
+        
         
         decisionHandler(.cancel)
     }
