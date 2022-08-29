@@ -19,7 +19,8 @@ final class FriendVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.prefetchDataSource = self
-        tableView.rowHeight = 70
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.separatorStyle = .none
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.refreshControl = refreshControll
         tableView.register(FriendsCell.self, forCellReuseIdentifier: FriendsCell.reuseID)
@@ -39,16 +40,24 @@ final class FriendVC: UIViewController {
         setupConstraints()
         setupSkeleton()
         fetchFriends(offset: 0)
+        
     }
     
     private func setupViews() {
-        title = "F r i e n d s"
+        //title = "F r i e n d s"
         view.addSubview(friendsTableView)
-        friendsTableView.backgroundColor = .systemBackground
+        view.backgroundColor = .white
+        friendsTableView.backgroundColor = .white
     }
     
     private func setupConstraints() {
-        friendsTableView.pinToEdges(to: view)
+        //friendsTableView.pinToEdges(to: view)
+        NSLayoutConstraint.activate([
+            friendsTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            friendsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            friendsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            friendsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
 
     
@@ -108,6 +117,7 @@ extension FriendVC: UITableViewDelegate, SkeletonTableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let userinfo = UserInfoVC(userInfo: viewModel.friends[indexPath.row])
         navigationController?.pushViewController(userinfo, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
