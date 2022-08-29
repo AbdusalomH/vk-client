@@ -30,6 +30,7 @@ class VideosApi {
             URLQueryItem(name: "v", value: Session.shared.v),
         ]
         guard let url = urlComponents.url else {return}
+        print(urlComponents.url)
         
         let request = URLRequest(url: url)
         
