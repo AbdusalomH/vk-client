@@ -18,6 +18,7 @@
 		04111A7E289BE97800612656 /* GroupsDetailApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04111A7D289BE97800612656 /* GroupsDetailApi.swift */; };
 		04111A8028A126B200612656 /* DetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04111A7F28A126B200612656 /* DetailsResponse.swift */; };
 		0422A4202886ABC20050836F /* ScaledHeightImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422A41F2886ABC20050836F /* ScaledHeightImageView.swift */; };
+		044DFDD428A6798C001F30B4 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 044DFDD328A6798C001F30B4 /* Kingfisher */; };
 		046FED3428A230B70050E3A3 /* DetailsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FED3328A230B70050E3A3 /* DetailsLabel.swift */; };
 		046FED3628A230DF0050E3A3 /* DetailsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FED3528A230DF0050E3A3 /* DetailsImageView.swift */; };
 		046FED3828A25C680050E3A3 /* GroupDetailsTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FED3728A25C680050E3A3 /* GroupDetailsTitleCell.swift */; };
@@ -152,6 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				044DFDD428A6798C001F30B4 /* Kingfisher in Frameworks */,
 				04C0A3732871919900604DC0 /* SkeletonView in Frameworks */,
 				049CF434286B102E008DAF86 /* SDWebImage in Frameworks */,
 			);
@@ -454,6 +456,7 @@
 			packageProductDependencies = (
 				049CF433286B102E008DAF86 /* SDWebImage */,
 				04C0A3722871919900604DC0 /* SkeletonView */,
+				044DFDD328A6798C001F30B4 /* Kingfisher */,
 			);
 			productName = "client-vk";
 			productReference = 049CF412286747D7008DAF86 /* client-vk.app */;
@@ -486,6 +489,7 @@
 			packageReferences = (
 				049CF432286B102E008DAF86 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				04C0A3712871919900604DC0 /* XCRemoteSwiftPackageReference "SkeletonView" */,
+				044DFDD228A6798C001F30B4 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 049CF413286747D7008DAF86 /* Products */;
 			projectDirPath = "";
@@ -693,6 +697,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		044DFDD228A6798C001F30B4 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		049CF432286B102E008DAF86 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
@@ -712,6 +724,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		044DFDD328A6798C001F30B4 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 044DFDD228A6798C001F30B4 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		049CF433286B102E008DAF86 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 049CF432286B102E008DAF86 /* XCRemoteSwiftPackageReference "SDWebImage" */;

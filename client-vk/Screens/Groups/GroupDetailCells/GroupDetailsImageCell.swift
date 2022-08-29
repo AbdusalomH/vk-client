@@ -29,6 +29,7 @@ class GroupDetailsImageCell: UITableViewCell {
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
         
+        
         NSLayoutConstraint.activate([
             image.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),

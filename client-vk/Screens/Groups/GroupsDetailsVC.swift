@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import Kingfisher
 
 enum GroupsDetailsEnum: Int, CaseIterable {
     case title = 0
@@ -152,7 +153,10 @@ extension GroupsDetailsVC: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: GroupDetailsImageCell.reuseID, for: indexPath) as! GroupDetailsImageCell
             
             let url = URL(string: attach)
-            cell.image.sd_setImage(with: url)
+            //cell.image.sd_setImage(with: url)
+            
+            cell.image.kf.indicatorType = .activity
+            cell.image.kf.setImage(with: url)
             
             return cell
             
