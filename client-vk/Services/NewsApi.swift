@@ -40,10 +40,7 @@ class NewsApi {
             if err != nil {
                 return
             }
-            
             guard let newsData = data else {return}
-            
-            print(newsData.prettyPrintedJSONString)
             
           let decoder = JSONDecoder()
 
@@ -65,7 +62,7 @@ class NewsApi {
                     var authorImageURL = ""
                     let postText = post.text ?? ""
                     //let postImage = post.attachments?.first?.photo?.sizes?.last?.url ?? ""
-                    let lowPostQualityImage = post.attachments?.first?.photo?.sizes?[2].url ?? ""
+                    let lowPostQualityImage = post.attachments?.first?.photo?.sizes?.last?.url ?? ""
                     let postLike = post.likes?.count ?? 0
                     
                     if sourceID < 0 {

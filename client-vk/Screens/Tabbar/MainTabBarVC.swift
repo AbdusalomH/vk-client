@@ -58,7 +58,7 @@ class MainTabBarVC: UITabBarController {
         self.viewControllers = [navigationFiendsVC, navigationNewsVC, navigationGroupsVC, navigationVideos]
         tabBar.layer.cornerRadius = 30
         tabBar.layer.masksToBounds = true
-        tabBar.layer.borderColor = UIColor.lightGray.cgColor
+        tabBar.layer.borderColor = #colorLiteral(red: 0.01083503384, green: 0.4891121984, blue: 0.9941192269, alpha: 1)
         tabBar.layer.borderWidth = 1
         tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
