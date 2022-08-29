@@ -20,7 +20,8 @@ class GroupsVC: UIViewController {
         tabelView.register(GroupsCell.self, forCellReuseIdentifier: GroupsCell.reuseID)
         tabelView.delegate = self
         tabelView.dataSource = self
-        tabelView.rowHeight = 70
+        tabelView.separatorStyle = .none
+        tabelView.rowHeight = UITableView.automaticDimension
         return tabelView
     }()
     
@@ -97,6 +98,7 @@ extension GroupsVC: UITableViewDataSource, UITableViewDelegate, SkeletonTableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: GroupsCell.reuseID, for: indexPath) as! GroupsCell
         let groupsRespons = viewModel.groups[indexPath.row]
 
@@ -143,6 +145,9 @@ extension GroupsVC: UITableViewDataSource, UITableViewDelegate, SkeletonTableVie
             }
             present(groupDetail, animated: true)
         }
+        
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
@@ -159,3 +164,4 @@ extension GroupsVC: UISearchResultsUpdating, UISearchBarDelegate {
         groupTable.reloadData()
     }
 }
+

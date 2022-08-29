@@ -44,7 +44,6 @@ class GroupsDetailsVC: UIViewController {
         tabel.register(GroupDetailsTitleCell.self, forCellReuseIdentifier: GroupDetailsTitleCell.reuseID)
         tabel.register(GroupDetailsImageCell.self, forCellReuseIdentifier: GroupDetailsImageCell.reuseID)
         tabel.separatorStyle = .none
-        tabel.rowHeight = UITableView.automaticDimension
         return tabel
     }()
     
@@ -59,6 +58,11 @@ class GroupsDetailsVC: UIViewController {
         
     }
     
+    override func viewDidLayoutSubviews() {
+        groupImageSelected.layer.cornerRadius = 30
+        groupImageSelected.clipsToBounds = true
+    }
+    
     func setupViews() {
         
         title = groupTitle
@@ -67,10 +71,11 @@ class GroupsDetailsVC: UIViewController {
         view.addSubview(groupLabel)
         view.addSubview(detailsTabel)
         
+        
         guard let url = URL(string: groupImage) else {return}
         groupImageSelected.sd_setImage(with: url)
         groupLabel.text = groupTitle
-        groupLabel.numberOfLines = 2
+        groupLabel.numberOfLines = 0
         groupLabel.adjustsFontSizeToFitWidth = true
     }
     
@@ -135,7 +140,7 @@ extension GroupsDetailsVC: UITableViewDelegate, UITableViewDataSource {
         
         
         let details = groupDetailsData[indexPath.section]
-        let attach = details.attachments?.first?.photo?.sizes?[2].url ?? ""
+        let attach = details.attachments?.first?.photo?.sizes?[1].url ?? ""
         let postCell = GroupsDetailsEnum(rawValue: indexPath.row)
         
         switch postCell {
@@ -169,5 +174,22 @@ extension GroupsDetailsVC: UITableViewDelegate, UITableViewDataSource {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let groupDetail = GroupsDetailsEnum(rawValue: indexPath.row)
+        let celldetails = groupDetailsData[indexPath.section]
+        
+        
+        switch groupDetail {
+            
+        case .photo:
+            if celldetails.attachments == nil {
+                return CGFloat.zero
+            }
+        default:
+            return UITableView.automaticDimension
+        }
+        return UITableView.automaticDimension
     }
 }
