@@ -7,18 +7,26 @@
 
 import UIKit
 import SDWebImage
+import Kingfisher
 
 class PhotoOfFeedTableViewCell: UITableViewCell {
     
     static let reuseID = "photoCell"
     
     
-    let postImage = ScaledHeightImageView()
+    lazy var postImage: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFit
+        image.clipsToBounds = true
+        return image
+    }()
     
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configure()
+        setupViews()
+        setupContraints()
     }
     
     required init?(coder: NSCoder) {
@@ -29,21 +37,28 @@ class PhotoOfFeedTableViewCell: UITableViewCell {
     func config(imageName: String) {
         guard let url = URL(string: imageName) else {return}
         
-        postImage.sd_setImage(with: url)
+
+
+        postImage.kf.indicatorType = .activity
+        postImage.kf.setImage(with: url)
     }
 
-    func configure() {
-        contentView.addSubview(postImage)
-        
-        postImage.translatesAutoresizingMaskIntoConstraints = false
-        postImage.clipsToBounds = true
-        
 
+    }
+    
+    private func setupViews() {
+        contentView.addSubview(postImage)
+    }
+
+    func setupContraints() {
+   
         NSLayoutConstraint.activate([
-            postImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            postImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            postImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            postImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+            postImage.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 1),
+            postImage.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1),
+            postImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
+            postImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
+            postImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
+            postImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0)
         ])
     }
 }

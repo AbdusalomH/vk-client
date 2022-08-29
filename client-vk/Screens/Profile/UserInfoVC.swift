@@ -86,7 +86,7 @@ class UserInfoVC: UIViewController {
     private func setupConstraints() {
         
         NSLayoutConstraint.activate([
-            userImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            userImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             userImage.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
             userImage.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
             userImage.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4),

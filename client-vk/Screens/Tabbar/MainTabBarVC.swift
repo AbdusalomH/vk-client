@@ -49,14 +49,21 @@ class MainTabBarVC: UITabBarController {
         
         
         
-        let navigationFiendsVC = UINavigationController(rootViewController: friends)
-        let navigationGroupsVC = UINavigationController(rootViewController: groups)
-        let navigationNewsVC = UINavigationController(rootViewController: news)
+        let navigationFiendsVC = friends
+        let navigationGroupsVC = groups
+        let navigationNewsVC = news
         //let navigationGroup2VC = UINavigationController(rootViewController: group2)
-        let navigationVideos = UINavigationController(rootViewController: videos)
+        let navigationVideos = videos
         
         self.viewControllers = [navigationFiendsVC, navigationNewsVC, navigationGroupsVC, navigationVideos]
+        tabBar.layer.cornerRadius = 30
+        tabBar.layer.masksToBounds = true
+        tabBar.layer.borderColor = UIColor.lightGray.cgColor
+        tabBar.layer.borderWidth = 1
+        tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
     }
-
+//    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+//        <#code#>
+//    }
 }

@@ -9,9 +9,6 @@ import UIKit
 import SkeletonView
 
 
-
-
-
 class GroupsVC: UIViewController {
     
     private var viewModel = ViewModel()

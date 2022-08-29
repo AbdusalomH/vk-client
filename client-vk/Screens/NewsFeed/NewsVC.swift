@@ -31,7 +31,6 @@ final class NewsVC: UIViewController {
         tableview.delegate = self
         tableview.dataSource = self
         tableview.showsVerticalScrollIndicator = false
-        tableview.estimatedRowHeight = UITableView.automaticDimension
         
         tableview.register(AuthorOfFeedTableViewCell.self, forCellReuseIdentifier: AuthorOfFeedTableViewCell.reuseID)
         tableview.register(TextOfFeedTableViewCell.self, forCellReuseIdentifier: TextOfFeedTableViewCell.reuseID)
@@ -171,7 +170,30 @@ extension NewsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        let cellType = PostCellType(rawValue: indexPath.row)
+        let cellnews = newsFeed[indexPath.section]
+        
+        switch cellType {
+
+        case .text:
+                if cellnews.text.isEmpty {
+                return CGFloat.zero
+            }
+        case .photo:
+            if cellnews.imageURL.isEmpty {
+                return CGFloat.zero
+            }
+            
+        default:
+            return UITableView.automaticDimension
+
+        }
+        return UITableView.automaticDimension
     }
 }
 
