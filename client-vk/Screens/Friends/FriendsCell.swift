@@ -24,7 +24,7 @@ class FriendsCell: UITableViewCell {
     let friendImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.layer.cornerRadius = 25
+        image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         return image
     }()

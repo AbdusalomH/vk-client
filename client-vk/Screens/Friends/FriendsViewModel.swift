@@ -23,7 +23,7 @@ final class FriendsViewModel {
             
             switch result {
             case .success(let friends):
-                self.friends = friends.items
+                self.friends.append(contentsOf: friends.items)
                 success()
                 return
             case .failure(let error):
