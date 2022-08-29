@@ -6,18 +6,24 @@
 //
 
 import UIKit
-import SDWebImage
+
 
 class GroupDetailsTitleCell: UITableViewCell {
     
     
     static let reuseID = "titleCell"
     
-    let postTitle = UILabel()
+    lazy var postTitle: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        return label
+    }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configure()
+        setupViews()
+        setupConstraint()
     }
     
     required init?(coder: NSCoder) {
@@ -29,10 +35,11 @@ class GroupDetailsTitleCell: UITableViewCell {
     }
     
     
-    func configure() {
+    func setupViews() {
         contentView.addSubview(postTitle)
-        postTitle.translatesAutoresizingMaskIntoConstraints = false
-        
+    }
+    
+    private func setupConstraint() {
         
         NSLayoutConstraint.activate([
             postTitle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
@@ -40,5 +47,6 @@ class GroupDetailsTitleCell: UITableViewCell {
             postTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             postTitle.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
         ])
+        
     }
 }

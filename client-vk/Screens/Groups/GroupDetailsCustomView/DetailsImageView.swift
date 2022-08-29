@@ -19,9 +19,9 @@ class DetailsImageView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
         contentMode = .scaleAspectFit
-
     }
 }
