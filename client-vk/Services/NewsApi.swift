@@ -61,8 +61,10 @@ class NewsApi {
                     var authorName = ""
                     var authorImageURL = ""
                     let postText = post.text ?? ""
-                    //let postImage = post.attachments?.first?.photo?.sizes?.last?.url ?? ""
+
                     let lowPostQualityImage = post.attachments?.first?.photo?.sizes?.last?.url ?? ""
+                    let lowPostQualityImage = post.attachments?.first?.photo?.sizes?[2].url ?? ""
+
                     let postLike = post.likes?.count ?? 0
                     
                     if sourceID < 0 {

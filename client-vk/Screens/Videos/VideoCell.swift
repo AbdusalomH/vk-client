@@ -82,9 +82,10 @@ class VideoCell: UITableViewCell {
         let imageUrl = URL(string: imageName)
         videoImage.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "screen"))
         
-        duration.text = "\(videohours.addZero()) : \(videoMinutes.addZero()) : \(videoSeconds.addZero())"
+        duration.text = " \(videohours.addZero()) : \(videoMinutes.addZero()) : \(videoSeconds.addZero()) "
     }
     
+
     func setupViews() {
         contentView.addSubview(backview)
         contentView.addSubview(videoImage)
@@ -95,6 +96,8 @@ class VideoCell: UITableViewCell {
     }
     
     private func setupConstraint() {
+
+
         NSLayoutConstraint.activate([
             
             backview.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
@@ -123,6 +126,7 @@ class VideoCell: UITableViewCell {
             duration.topAnchor.constraint(equalTo: videoImage.topAnchor, constant: 8),
             duration.heightAnchor.constraint(equalToConstant: 20),
             duration.widthAnchor.constraint(equalToConstant: 100)
+
    
         ])
     }

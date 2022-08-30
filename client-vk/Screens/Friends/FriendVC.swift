@@ -141,6 +141,7 @@ extension FriendVC: UITableViewDelegate, SkeletonTableViewDataSource {
 extension FriendVC: UITableViewDataSourcePrefetching {
     
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+
         let maxNumber = indexPaths.map({$0.last ?? 0}).max() ?? 0
         
         
