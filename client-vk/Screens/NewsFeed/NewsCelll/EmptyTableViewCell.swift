@@ -26,7 +26,6 @@ class EmptyTableViewCell: UITableViewCell {
     
     func configure() {
         self.addSubview(heightLabel)
-        
         heightLabel.translatesAutoresizingMaskIntoConstraints = false
         
         heightLabel.backgroundColor = #colorLiteral(red: 0.9502168298, green: 0.9445304871, blue: 0.9708524346, alpha: 1)

@@ -16,21 +16,21 @@ class MainTabBarVC: UITabBarController {
         
         let friends = FriendVC()
         let friendsTabBarItem = UITabBarItem()
-        friendsTabBarItem.title = "Друзья"
+        friendsTabBarItem.title = "Friends"
         friendsTabBarItem.image = UIImage(systemName: "person")
         friends.tabBarItem = friendsTabBarItem
         
         
         let groups = GroupsVC()
         let groupsBarItem = UITabBarItem()
-        groupsBarItem.title = "Группа"
+        groupsBarItem.title = "Groups"
         groupsBarItem.image = UIImage(systemName: "person.3")
         groups.tabBarItem = groupsBarItem
         
         
         let news = NewsVC()
         let newsBarItem = UITabBarItem()
-        newsBarItem.title = "Новости"
+        newsBarItem.title = "News"
         newsBarItem.image = UIImage(systemName: "globe.americas")
         news.tabBarItem = newsBarItem
         
@@ -46,7 +46,7 @@ class MainTabBarVC: UITabBarController {
         videoBarItem.title = "Videos"
         videoBarItem.image = UIImage(systemName: "video.square")
         videos.tabBarItem = videoBarItem
-        
+
         
         
         let navigationFiendsVC = friends
@@ -63,7 +63,14 @@ class MainTabBarVC: UITabBarController {
         tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
     }
-//    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-//        <#code#>
-//    }
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+            guard let barItemView = item.value(forKey: "view") as? UIView else { return }
+
+            let timeInterval: TimeInterval = 0.3
+            let propertyAnimator = UIViewPropertyAnimator(duration: timeInterval, dampingRatio: 0.5) {
+                barItemView.transform = CGAffineTransform.identity.scaledBy(x: 0.9, y: 0.9)
+            }
+            propertyAnimator.addAnimations({ barItemView.transform = .identity }, delayFactor: CGFloat(timeInterval))
+            propertyAnimator.startAnimation()
+    }
 }
