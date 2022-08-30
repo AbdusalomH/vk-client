@@ -59,8 +59,8 @@ class FriendsCell: UITableViewCell {
         friendImage.layer.cornerRadius = 40
         friendImage.contentMode = .scaleAspectFit
         
-        layer.shadowColor = UIColor.gray.cgColor
-        layer.shadowOpacity = 0.3
+        layer.shadowColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        layer.shadowOpacity = 0.8
         layer.shadowOffset = .zero
     }
     

@@ -115,6 +115,7 @@ extension AuthVC: WKNavigationDelegate {
 
         let mainTabBarVC = MainTabBarVC()
         navigationController?.pushViewController(mainTabBarVC, animated: true)
+        //navigationController?.isNavigationBarHidden = true
         
         
         decisionHandler(.cancel)
