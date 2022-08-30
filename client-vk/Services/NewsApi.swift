@@ -63,7 +63,6 @@ class NewsApi {
                     let postText = post.text ?? ""
 
                     let lowPostQualityImage = post.attachments?.first?.photo?.sizes?.last?.url ?? ""
-                    let lowPostQualityImage = post.attachments?.first?.photo?.sizes?[2].url ?? ""
 
                     let postLike = post.likes?.count ?? 0
                     
