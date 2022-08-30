@@ -15,6 +15,8 @@ class GroupDetailsImageCell: UITableViewCell {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
+        image.layer.cornerRadius = 10
+        image.clipsToBounds = true
         return image
     }()
 
@@ -22,6 +24,7 @@ class GroupDetailsImageCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
         setupContraints()
+        self.backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {
@@ -38,9 +41,9 @@ class GroupDetailsImageCell: UITableViewCell {
             image.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 1),
             image.widthAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 1),
             image.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
-            image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
-            image.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
-            image.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0)
+            image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            image.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            image.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
         ])
     }
 }

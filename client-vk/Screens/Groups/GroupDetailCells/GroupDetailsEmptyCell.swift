@@ -7,13 +7,15 @@
 
 import UIKit
 
-class GroupEmptyCell: UITableViewCell {
+class GroupDetailsEmptyCell: UITableViewCell {
+    
+    static let reuseID = "GroupDetailsEmptyCell"
 
     
     lazy var emptyLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .clear
+        label.backgroundColor = .lightGray
         return label
     }()
     
@@ -30,18 +32,18 @@ class GroupEmptyCell: UITableViewCell {
     
     
     private func setupView() {
-        contentView.addSubview(emptyLabel)
+        self.addSubview(emptyLabel)
     }
     
     private func setupConstraints() {
         
         NSLayoutConstraint.activate([
         
-            emptyLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
-            emptyLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 0),
-            emptyLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 0),
-            emptyLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
-            emptyLabel.heightAnchor.constraint(equalToConstant: 30)
+            emptyLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+            emptyLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
+            emptyLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
+            emptyLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
+            emptyLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
     

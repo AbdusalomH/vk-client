@@ -18,10 +18,10 @@ class GroupsVC: UIViewController {
         
         let tabelView = UITableView()
         tabelView.register(GroupsCell.self, forCellReuseIdentifier: GroupsCell.reuseID)
-        tabelView.delegate = self
-        tabelView.dataSource = self
-        tabelView.separatorStyle = .none
-        tabelView.rowHeight = UITableView.automaticDimension
+        tabelView.delegate                                       = self
+        tabelView.dataSource                                     = self
+        tabelView.separatorStyle                                 = .none
+        tabelView.rowHeight                                      = UITableView.automaticDimension
         return tabelView
     }()
     
@@ -45,7 +45,6 @@ class GroupsVC: UIViewController {
         setupContraints()
         setupSkeleton()
         fetchGroups()
-
         
     }
     

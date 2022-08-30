@@ -12,6 +12,7 @@ import Kingfisher
 enum GroupsDetailsEnum: Int, CaseIterable {
     case title = 0
     case photo
+    case empty
 }
 
 class GroupsDetailsVC: UIViewController {
@@ -30,7 +31,7 @@ class GroupsDetailsVC: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    let backView = UIView()
     let groupLabel = DetailsLabel()
     let groupImageSelected = DetailsImageView(frame: .zero)
     
@@ -43,7 +44,10 @@ class GroupsDetailsVC: UIViewController {
         tabel.dataSource = self
         tabel.register(GroupDetailsTitleCell.self, forCellReuseIdentifier: GroupDetailsTitleCell.reuseID)
         tabel.register(GroupDetailsImageCell.self, forCellReuseIdentifier: GroupDetailsImageCell.reuseID)
+        tabel.register(GroupDetailsEmptyCell.self, forCellReuseIdentifier: GroupDetailsEmptyCell.reuseID)
         tabel.separatorStyle = .none
+        tabel.backgroundColor = .white
+        tabel.rowHeight = UITableView.automaticDimension
         return tabel
     }()
     
@@ -56,6 +60,7 @@ class GroupsDetailsVC: UIViewController {
         setupContraints()
         fetchGroupDetails()
         
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -66,11 +71,14 @@ class GroupsDetailsVC: UIViewController {
     func setupViews() {
         
         title = groupTitle
-        view.backgroundColor = .systemBackground
+        view.addSubview(backView)
         view.addSubview(groupImageSelected)
         view.addSubview(groupLabel)
         view.addSubview(detailsTabel)
+        view.backgroundColor = .lightGray
         
+        backView.translatesAutoresizingMaskIntoConstraints = false
+        backView.backgroundColor = .white
         
         guard let url = URL(string: groupImage) else {return}
         groupImageSelected.sd_setImage(with: url)
@@ -82,9 +90,15 @@ class GroupsDetailsVC: UIViewController {
     func setupContraints() {
         
         NSLayoutConstraint.activate([
+            
+            backView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            backView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            backView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            backView.heightAnchor.constraint(equalToConstant: 144),
+            
         
             groupImageSelected.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            groupImageSelected.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            groupImageSelected.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 20),
             groupImageSelected.heightAnchor.constraint(equalToConstant: 60),
             groupImageSelected.widthAnchor.constraint(equalToConstant: 60),
             
@@ -164,6 +178,11 @@ extension GroupsDetailsVC: UITableViewDelegate, UITableViewDataSource {
             cell.image.kf.setImage(with: url)
             
             return cell
+        
+        case .empty:
+            let cell = tableView.dequeueReusableCell(withIdentifier: GroupDetailsEmptyCell.reuseID, for: indexPath) as! GroupDetailsEmptyCell
+            
+            return cell
             
         case .none:
             return UITableViewCell()
@@ -182,6 +201,11 @@ extension GroupsDetailsVC: UITableViewDelegate, UITableViewDataSource {
         
         
         switch groupDetail {
+            
+        case .title:
+            if celldetails.text == "" {
+                return CGFloat.zero
+            }
             
         case .photo:
             if celldetails.attachments == nil {
