@@ -17,6 +17,8 @@ class GroupDetailsTitleCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
+        label.layer.cornerRadius = 10
+        label.clipsToBounds = true
         return label
     }()
 
@@ -24,6 +26,7 @@ class GroupDetailsTitleCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
         setupConstraint()
+        self.backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {

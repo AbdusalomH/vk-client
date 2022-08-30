@@ -65,6 +65,8 @@ class UserInfoVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         fetchFriendsData()
+        navigationController?.setNavigationBarHidden(false, animated: true)
+
     }
     
     

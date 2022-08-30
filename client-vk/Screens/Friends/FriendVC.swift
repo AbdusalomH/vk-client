@@ -44,8 +44,12 @@ final class FriendVC: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     private func setupViews() {
-        //title = "F r i e n d s"
         view.addSubview(friendsTableView)
         view.backgroundColor = .white
         friendsTableView.backgroundColor = .white
@@ -94,7 +98,6 @@ final class FriendVC: UIViewController {
             self.friendsTableView.reloadData()
             
         } failure: { err in
-            
             self.presentAlert(title: "Warning", body: err.localizedDescription, button: "Ok")
         }
     }
@@ -143,7 +146,7 @@ extension FriendVC: UITableViewDataSourcePrefetching {
         
         
         if maxNumber > viewModel.friends.count - 3, viewModel.isReqestingFriends == false {
-                fetchNextFriends(offset: maxNumber)
+            fetchFriends(offset: maxNumber)
         }
     }
 }

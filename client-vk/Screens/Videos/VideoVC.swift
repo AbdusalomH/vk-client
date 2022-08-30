@@ -29,7 +29,8 @@ class VideoVC: UIViewController, UITableViewDelegate, SkeletonTableViewDataSourc
         tableview.delegate = self
         tableview.dataSource = self
         tableview.prefetchDataSource = self
-        tableview.estimatedRowHeight = 150
+        tableview.estimatedRowHeight = UITableView.automaticDimension
+        tableview.separatorStyle = .none
         return tableview
     }()
     
