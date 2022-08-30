@@ -40,9 +40,6 @@ class PhotoOfFeedTableViewCell: UITableViewCell {
         postImage.kf.indicatorType = .activity
         postImage.kf.setImage(with: url)
     }
-
-
-    }
     
     private func setupViews() {
         contentView.addSubview(postImage)
