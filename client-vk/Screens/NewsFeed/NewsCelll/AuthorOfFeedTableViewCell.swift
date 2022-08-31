@@ -12,10 +12,33 @@ class AuthorOfFeedTableViewCell: UITableViewCell {
     
     static let reuseID = "cell"
     
-    let authorNameLabel = UILabel()
-    let authorImageView = UIImageView()
-    let postDate = UILabel()
+    lazy var authorNameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 3
+        label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+        return label
+    }()
+    
+    
+    lazy var authorImageView: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFill
+        return image
+    }()
+    
+    
+    lazy var postDate: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 12, weight: .light)
+        label.textAlignment = .left
+        return label
+    }()
 
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configure()
@@ -29,14 +52,19 @@ class AuthorOfFeedTableViewCell: UITableViewCell {
             authorNameLabel.text = authorName
             guard let url = URL(string: authorPhoto) else {return}
             authorImageView.sd_setImage(with: url)
+            
             postDate.text = "\(dateOfPublication.formatted(date: .omitted, time: .shortened))"
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        authorImageView.layer.cornerRadius = 0.5 * authorImageView.frame.height
+        self.layer.cornerRadius = 15
+        self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        self.clipsToBounds = true
+        
     }
-    
+
+
     
     func configure() {
         
@@ -44,22 +72,6 @@ class AuthorOfFeedTableViewCell: UITableViewCell {
         contentView.addSubview(authorImageView)
         contentView.addSubview(postDate)
                         
-        authorNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        authorImageView.translatesAutoresizingMaskIntoConstraints = false
-        postDate.translatesAutoresizingMaskIntoConstraints = false
-        
-        authorNameLabel.numberOfLines = 3
-        authorNameLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        
-        authorImageView.contentMode = .scaleAspectFill
-        
-        
-        postDate.font = UIFont.systemFont(ofSize: 12, weight: .light)
-        postDate.textAlignment = .left
-        
-        //let marginConterView = contentView.layoutMarginsGuide
-        
-        
         NSLayoutConstraint.activate([
             
             authorImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
@@ -67,14 +79,6 @@ class AuthorOfFeedTableViewCell: UITableViewCell {
             authorImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             authorImageView.widthAnchor.constraint(equalToConstant: 50),
             
-
-            
-//            marginConterView.topAnchor.constraint(equalTo: authorImageView.topAnchor, constant: -16),
-//            marginConterView.leadingAnchor.constraint(equalTo: authorImageView.leadingAnchor, constant: 8),
-//            marginConterView.bottomAnchor.constraint(equalTo: authorImageView.bottomAnchor, constant: 8),
-//            authorImageView.widthAnchor.constraint(equalToConstant: 50),
-            
-//            marginConterView.trailingAnchor.constraint(equalTo: postDate.trailingAnchor, constant: -8),
             postDate.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             postDate.centerYAnchor.constraint(equalTo: authorImageView.centerYAnchor),
             postDate.heightAnchor.constraint(equalToConstant: 20),
