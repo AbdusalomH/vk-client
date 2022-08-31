@@ -19,3 +19,7 @@ It's a pet project with social media platform (russian social media). Added seve
 | ----------------------| ----------------------- |----------------------|
 | ![](friendsVC1.png)   | ![](videosVC.png)       | ![](newsFeedVC.png)  |
 
+| App navigation        |
+|-----------------------|
+| ![](vk_video.gif)     |
+
