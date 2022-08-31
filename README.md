@@ -13,9 +13,9 @@ It's a pet project with social media platform (russian social media). Added seve
 9. MVVM
 10. Swift package manage (no cocoapods)
 
-| App navigation        |   NewsFeed           |    NewsFeed          |
-|-----------------------|----------------------|----------------------|
-| ![](vk_video.gif)     | ![](newsFeedVC.png)  | ![](newsFeedVC.png)  |
+| App navigation        |
+|-----------------------|
+| ![](vk_video.gif)     |
 
 | Friends               | Videos.              |   NewsFeed           |
 | ----------------------| ---------------------|----------------------|
