@@ -13,9 +13,9 @@ It's a pet project with social media platform (russian social media). Added seve
 9. MVVM
 10. Swift package manage (no cocoapods)
 
-![](vk-client/init.gif)  
+  
 
 | Init                  | Friends VC    |   NewsFeed.        |
 | ----------------------| ------------- |--------------------|
-| ![](screenshot2.png)  | Content Cell  |![](screenshot2.png)|
+|                       | Content Cell  |                    |
 
