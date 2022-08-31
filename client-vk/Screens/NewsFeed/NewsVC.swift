@@ -31,6 +31,7 @@ final class NewsVC: UIViewController {
         tableview.delegate = self
         tableview.dataSource = self
         tableview.showsVerticalScrollIndicator = false
+        tableview.separatorStyle = .none
         
         tableview.register(AuthorOfFeedTableViewCell.self, forCellReuseIdentifier: AuthorOfFeedTableViewCell.reuseID)
         tableview.register(TextOfFeedTableViewCell.self, forCellReuseIdentifier: TextOfFeedTableViewCell.reuseID)
@@ -43,7 +44,7 @@ final class NewsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigatioBar()
+        //configureNavigatioBar()
         setupViews()
         setupContraints()
         fetchNews()
@@ -54,15 +55,15 @@ final class NewsVC: UIViewController {
         newsTableView.reloadData()
     }
     
-    private func configureNavigatioBar() {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.configureWithOpaqueBackground()
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.black]
-        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
-        navBarAppearance.backgroundColor =  #colorLiteral(red: 0.9502168298, green: 0.9445304871, blue: 0.9708524346, alpha: 1)
-        navigationController?.navigationBar.standardAppearance = navBarAppearance
-        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-    }
+//     private func configureNavigatioBar() {
+//         let navBarAppearance = UINavigationBarAppearance()
+//         navBarAppearance.configureWithOpaqueBackground()
+//         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+//         navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+//         navBarAppearance.backgroundColor =  #colorLiteral(red: 0.9502168298, green: 0.9445304871, blue: 0.9708524346, alpha: 1)
+//         navigationController?.navigationBar.standardAppearance = navBarAppearance
+//         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+//     }
     
     
     private func setupViews() {
