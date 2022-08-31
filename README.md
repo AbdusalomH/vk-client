@@ -11,7 +11,7 @@ It's a pet project with social media platform (russian social media). Added seve
 7. MVC,
 8. MVP,
 9. MVVM
-10. Swift package manage (no cocoapods)
+10. Swift package manage (no CocoaPods)
 
 | App navigation        |
 |-----------------------|
