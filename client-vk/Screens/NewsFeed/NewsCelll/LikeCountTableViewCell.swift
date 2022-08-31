@@ -23,6 +23,13 @@ class LikeCountTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.layer.cornerRadius = 15
+        self.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        self.clipsToBounds = true
+    }
+    
     
     func config(likeCounts: Int) {
    
