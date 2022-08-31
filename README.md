@@ -15,7 +15,7 @@ It's a pet project with social media platform (russian social media). Added seve
 
   
 
-| Init                  | Friends VC    |   NewsFeed.        |
-| ----------------------| ------------- |--------------------|
-|                       | Content Cell  |                    |
+| Friends               | Communities VC          |   NewsFeed           |
+| ----------------------| ----------------------- |----------------------|
+| ![](friendsVC1.png)   | ![](communitiesVC.png)  | ![](newsFeedVC.png)  |
 
