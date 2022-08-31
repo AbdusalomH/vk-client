@@ -15,7 +15,7 @@ It's a pet project with social media platform (russian social media). Added seve
 
 ![](vk-client/init.gif)  
 
-| Init                                        | Friends VC    |
-| ------------------------------------------- | ------------- |
-| ![](screenshot2.png)                        | Content Cell  |
+| Init                  | Friends VC    |   NewsFeed.        |
+| ----------------------| ------------- |--------------------|
+| ![](screenshot2.png)  | Content Cell  |![](screenshot2.png)|
 
